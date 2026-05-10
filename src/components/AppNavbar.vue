@@ -59,22 +59,33 @@ import { RouterLink } from 'vue-router'
             <RouterLink
               class="nav-link"
               to="/services"
-              active-class="active"
-            >
+              active-class="active">
               Services
             </RouterLink>
           </li>
 
           <!-- RESOURCES -->
-          <li class="nav-item">
-            <RouterLink
-              class="nav-link"
-              to="/resources"
-              active-class="active"
-            >
-              Resources
-            </RouterLink>
-          </li>
+          <li class="nav-item dropdown-hover">
+
+          <RouterLink
+            class="nav-link"
+            to="/resources"
+            active-class="active">
+            Resources
+          </RouterLink>
+          <ul class="hover-menu">
+            <li>
+              <RouterLink to="/resources?section=opac">
+                Online Public Access Catalog
+              </RouterLink>
+            </li>
+            <li>
+              <RouterLink to="/resources?section=eresources">
+                E-Resources
+              </RouterLink>
+            </li>
+          </ul>
+        </li>
 
           <!-- EVENTS -->
           <li class="nav-item">
