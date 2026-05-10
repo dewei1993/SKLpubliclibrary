@@ -105,3 +105,103 @@ function truncateText(text, words = 50) {
     </div>
   </section>
 </template>
+
+<style>
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title-top {
+      color: var(--secondary);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      color: var(--primary);
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: clamp(28px, 3.5vw, 46px);
+      margin-bottom: 20px;
+    }
+
+    .about-image {
+      position: relative;
+      height: 500px;
+      border: 8px solid #fff;
+      box-shadow: var(--shadow);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    /* QUOTE OVERLAY */
+    .about-quote {
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      max-width: 70%;
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      padding: 10px 14px;
+      font-size: 13px;
+      font-style: italic;
+      border-left: 4px solid var(--tertiary);
+      border-radius: 4px;
+    }
+
+    .about-panel {
+      padding-left: 20px;
+    }
+
+    .content-box {
+      white-space: pre-line;
+    }
+
+        /* Default */
+    .tabs-wrap .btn {
+      border-radius: 8px;
+      font-weight: 700;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      padding: 10px 18px;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      background: transparent;
+      transition: 0.3s ease;
+    }
+
+
+    /* Hover = SECONDARY */
+    .tabs-wrap .btn:hover {
+      background: var(--secondary);
+      border-color: var(--secondary);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* Active = PRIMARY */
+    .tabs-wrap .btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    /* Prevent hover from overriding active */
+    .tabs-wrap .btn.active:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    .content-box {
+      border: 4px solid var(--primary);
+      padding: 26px;
+      font-size: 18px;
+      line-height: 1.7;
+      background: #fff;
+      min-height: 250px;
+    }
+
+
+</style>

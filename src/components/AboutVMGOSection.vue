@@ -49,29 +49,19 @@ const vmgoItems = [
 </script>
 
 <template>
-<!-- ABOUT PAGE CONTENT HERE -->
-  <!-- HERO -->
-  <section class="about-history-hero">
-    <div class="hero-blur-overlay"></div>
-    <div class="container position-relative">
-      <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
-        <h1>
-          Library VMGO
-        </h1>
-        <div class="breadcrumb-text">
-          <RouterLink to="/">
-            Home
-          </RouterLink>
-          /
-          <span>About Us</span>
-        </div>
-      </div>
-    </div>
-  </section>
 
-    <section id="vmgo" class="vmgo-section">
+  <section id="vmgo" class="vmgo-section">
   <div class="container">
-
+      <div class="facilities-header text-center">
+        <h2>Library VMGO</h2>
+        <div class="facilities-line"></div>
+          <p class="vmgo-description">
+            Learn more about the Vision, Mission, Goals, and Objectives of
+            Sentro ng Karunungan Library in promoting literacy, knowledge,
+            community development, and accessible public library services
+            for lifelong learning.
+          </p>
+      </div>
     <div class="vmgo-horizontal">
       <div
         v-for="item in vmgoItems"
@@ -95,3 +85,266 @@ const vmgoItems = [
 </section>
 
 </template>
+
+<style>
+
+/* =========================================
+   LIBRARY VMGO SECTION
+========================================= */
+
+.vmgo-section {
+  background:
+    linear-gradient(
+      180deg,
+      #f7f9fc 0%,
+      #ffffff 100%
+    );
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* DECORATIVE BG */
+.vmgo-section::before {
+  content: "";
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 320px;
+  height: 320px;
+  background: rgba(249,195,0,0.08);
+  border-radius: 50%;
+}
+
+.vmgo-section::after {
+  content: "";
+  position: absolute;
+  bottom: -140px;
+  left: -140px;
+  width: 340px;
+  height: 340px;
+  background: rgba(26,75,109,0.05);
+  border-radius: 50%;
+}
+
+/* HEADER */
+.vmgo-header {
+  max-width: 860px;
+  margin: 0 auto 60px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.vmgo-header .section-title {
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 900;
+  color: var(--primary);
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.vmgo-header p,
+.vmgo-description {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+  color: #5e6470;
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+/* HORIZONTAL SLIDER */
+.vmgo-horizontal {
+  display: flex;
+  gap: 20px;
+  height: 520px;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+}
+
+/* CARD */
+.vmgo-slide-card {
+  position: relative;
+  flex: 1;
+  min-width: 140px;
+  border-radius: 28px;
+  overflow: hidden;
+  cursor: pointer;
+
+  transition:
+    flex 0.55s ease,
+    transform 0.4s ease;
+
+  box-shadow:
+    0 15px 35px rgba(0,0,0,0.10),
+    0 5px 10px rgba(0,0,0,0.04);
+
+  background: #fff;
+}
+
+/* ACTIVE */
+.vmgo-slide-card.active {
+  flex: 4.5;
+}
+
+/* IMAGE */
+.vmgo-slide-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+/* IMAGE HOVER */
+.vmgo-slide-card:hover img {
+  transform: scale(1.08);
+}
+
+/* OVERLAY */
+.vmgo-slide-overlay {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  padding: 34px;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(26,75,109,0.96) 8%,
+      rgba(26,75,109,0.75) 38%,
+      rgba(0,0,0,0.15) 100%
+    );
+
+  color: #fff;
+
+  transition: 0.4s ease;
+}
+
+/* ACTIVE OVERLAY */
+.vmgo-slide-card.active .vmgo-slide-overlay {
+  background:
+    linear-gradient(
+      to top,
+      rgba(209,43,46,0.95) 5%,
+      rgba(26,75,109,0.78) 42%,
+      rgba(0,0,0,0.12) 100%
+    );
+}
+
+/* TITLE */
+.vmgo-slide-overlay h3 {
+  font-size: clamp(28px, 4vw, 56px);
+  font-weight: 900;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+/* SMALL CARDS */
+.vmgo-slide-card:not(.active) .vmgo-slide-overlay {
+  padding: 24px;
+  justify-content: flex-end;
+}
+
+.vmgo-slide-card:not(.active) .vmgo-slide-overlay h3 {
+  font-size: 24px;
+  margin-bottom: 0;
+}
+
+/* CONTENT */
+.vmgo-slide-overlay p {
+  white-space: pre-line;
+  overflow-y: auto;
+
+  max-height: 240px;
+
+  padding-right: 10px;
+
+  font-size: 15px;
+  line-height: 1.9;
+  color: rgba(255,255,255,0.95);
+
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.45) transparent;
+}
+
+/* SCROLLBAR */
+.vmgo-slide-overlay p::-webkit-scrollbar {
+  width: 6px;
+}
+
+.vmgo-slide-overlay p::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.vmgo-slide-overlay p::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.4);
+  border-radius: 20px;
+}
+
+.vmgo-slide-overlay p::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.7);
+}
+
+/* HOVER EFFECT */
+.vmgo-slide-card:hover {
+  transform: translateY(-6px);
+}
+
+/* MOBILE */
+@media (max-width: 991px) {
+
+  .vmgo-section {
+    padding: 80px 0;
+  }
+
+  .vmgo-horizontal {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .vmgo-slide-card,
+  .vmgo-slide-card.active {
+    flex: none;
+    height: 320px;
+  }
+
+  .vmgo-slide-overlay {
+    padding: 24px;
+  }
+
+  .vmgo-slide-overlay h3 {
+    font-size: 32px;
+  }
+
+  .vmgo-slide-overlay p {
+    max-height: 150px;
+    font-size: 14px;
+  }
+
+}
+
+@media (max-width: 576px) {
+
+  .vmgo-header .section-title {
+    font-size: 34px;
+  }
+
+  .vmgo-slide-card,
+  .vmgo-slide-card.active {
+    height: 280px;
+  }
+
+  .vmgo-slide-overlay h3 {
+    font-size: 28px;
+  }
+
+}
+</style>

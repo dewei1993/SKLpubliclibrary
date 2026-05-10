@@ -7,29 +7,17 @@ import building2Img from '@/assets/images/building2.jpg'
 </script>
 
 <template>
-<!-- ABOUT PAGE CONTENT HERE -->
-  <!-- HERO -->
-  <section class="about-history-hero">
-    <div class="hero-blur-overlay"></div>
-    <div class="container position-relative">
-      <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
-        <h1>
-          Brief History
-        </h1>
-        <div class="breadcrumb-text">
-          <RouterLink to="/">
-            Home
-          </RouterLink>
-          /
-          <span>About Us</span>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- BRIEF HISTORY -->
   <section class="brief-history-section">
     <div class="container">
+        <div class="facilities-header text-center">
+        <h2>Brief History</h2>
+        <div class="facilities-line"></div>
+      <p>
+        Discover the rich history and development of Sentro ng Karunungan Library as it continues to promote literacy, knowledge, lifelong learning, and meaningful public service within the community.
+      </p>
+      </div>
       <!-- FIRST ROW -->
       <div class="row g-5 align-items-start">
         <div class="col-lg-7">
@@ -95,3 +83,166 @@ import building2Img from '@/assets/images/building2.jpg'
   </section>
 
 </template>
+
+<style>
+/* =========================================
+   BRIEF HISTORY SECTION
+========================================= */
+
+.brief-history-section {
+  padding: 90px 0;
+  background: #f7f9fc;
+  position: relative;
+  overflow: hidden;
+}
+
+/* HEADER */
+.facilities-header {
+  max-width: 760px;
+  margin: 0 auto 60px;
+  text-align: center;
+}
+
+.facilities-header h2 {
+  font-size: clamp(38px, 5vw, 58px);
+  font-weight: 900;
+  color: var(--primary);
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.facilities-line {
+  width: 90px;
+  height: 4px;
+  background: var(--tertiary);
+  margin: 0 auto 20px;
+  border-radius: 20px;
+}
+
+.facilities-header p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #5e6470;
+  margin: 0;
+}
+
+/* HISTORY CONTENT */
+.brief-history-section .row {
+  margin-bottom: 40px;
+}
+
+/* TEXT SIDE */
+.brief-history-section p {
+  font-size: 15px;
+  line-height: 1.95;
+  color: #4e5661;
+  margin-bottom: 22px;
+  text-align: justify;
+}
+
+/* IMAGE STYLE */
+.history-img {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  object-fit: cover;
+
+  border-radius: 24px;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.10),
+    0 3px 10px rgba(0,0,0,0.05);
+
+  transition: 0.45s ease;
+  border: 6px solid #fff;
+}
+
+.history-img:hover {
+  transform: scale(1.03);
+}
+
+/* CARD EFFECT */
+.brief-history-section .col-lg-7,
+.brief-history-section .col-lg-5 {
+  position: relative;
+}
+
+.brief-history-section .col-lg-7 {
+  background: #fff;
+  padding: 34px;
+  border-radius: 24px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  border-top: 6px solid var(--tertiary);
+}
+
+/* SECOND CONTENT STYLE */
+.brief-history-section .row:nth-child(3) .col-lg-7 {
+  border-top: 6px solid var(--secondary);
+}
+
+/* SUBTLE DECORATION */
+.brief-history-section::before {
+  content: "";
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 320px;
+  height: 320px;
+  background: rgba(249,195,0,0.08);
+  border-radius: 50%;
+}
+
+.brief-history-section::after {
+  content: "";
+  position: absolute;
+  bottom: -120px;
+  left: -120px;
+  width: 320px;
+  height: 320px;
+  background: rgba(26,75,109,0.06);
+  border-radius: 50%;
+}
+
+/* MOBILE */
+@media (max-width: 991px) {
+
+  .brief-history-section {
+    padding: 70px 0;
+  }
+
+  .facilities-header {
+    margin-bottom: 40px;
+  }
+
+  .history-img {
+    min-height: 280px;
+  }
+
+  .brief-history-section .col-lg-7 {
+    padding: 24px;
+  }
+
+  .brief-history-section p {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+}
+
+@media (max-width: 576px) {
+
+  .facilities-header h2 {
+    font-size: 34px;
+  }
+
+  .history-img {
+    border-radius: 18px;
+  }
+
+  .brief-history-section .col-lg-7 {
+    border-radius: 18px;
+  }
+
+}
+</style>

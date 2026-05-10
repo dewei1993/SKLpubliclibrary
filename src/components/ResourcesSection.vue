@@ -47,74 +47,153 @@ function scrollResources(direction) {
 
 <template>
   <section id="resources" class="resources-section">
-
     <div class="container">
-
       <!-- HEADER -->
       <div class="d-flex justify-content-between align-items-center mb-4">
-
         <div>
-
           <div class="section-title-top">
             E-Resources
           </div>
-
           <h2 class="resources-title-main">
             OPEN EDUCATIONAL RESOURCES
           </h2>
-
           <p class="resources-subtext">
             Access a curated digital environment of
             open-license materials, textbooks,
             and peer-reviewed research.
           </p>
-
         </div>
-
         <!-- ARROWS -->
         <div class="resource-controls">
-
-          <button
-            class="btn-nav"
-            @click="scrollResources(-1)"
-          >
+          <button class="btn-nav"
+            @click="scrollResources(-1)">
             <i class="bi bi-arrow-left"></i>
           </button>
 
-          <button
-            class="btn-nav"
-            @click="scrollResources(1)"
-          >
+          <button class="btn-nav"
+            @click="scrollResources(1)">
             <i class="bi bi-arrow-right"></i>
           </button>
-
         </div>
-
       </div>
 
       <!-- CARDS -->
-      <div
-        class="resource-track"
-        ref="resourceTrack"
-      >
-
+      <div class="resource-track" ref="resourceTrack">
         <div
           v-for="(resource, index) in resources"
           :key="index"
-          class="resource-card"
-        >
-
+          class="resource-card">
           <img
             :src="resource"
             class="resource-logo"
-            alt="E-Resources"
-          >
-
+            alt="E-Resources">
         </div>
-
       </div>
-
     </div>
-
   </section>
 </template>
+
+<style>
+
+
+    .resources-section {
+      background: #f4f6f8;
+      padding: 70px 0;
+    }
+
+    .resources-title-main {
+      font-weight: 900;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .resources-subtext {
+      color: var(--neutral);
+      max-width: 500px;
+      font-size: 14px;
+    }
+
+    /* Controls */
+    .resource-controls {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-nav {
+      width: 42px;
+      height: 42px;
+      border: none;
+      background: #e0e0e0;
+      border-radius: 4px;
+      transition: 0.3s;
+    }
+
+    .btn-nav:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    /* Cards layout */
+    .resource-track {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding-top: 10px;
+      cursor: grab;
+    }
+
+    .resource-track.dragging {
+      cursor: grabbing;
+    }
+
+    .resource-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Card */
+    .resource-card {
+      min-width: 200px;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .resource-logo {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    .resource-card:hover .resource-logo {
+      filter: grayscale(0%);
+    }
+
+    /* Hover effect */
+    .resource-card:hover h6 {
+      color: #fff;
+    }
+
+    .resource-card p {
+      margin: 0;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .resource-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .resource-card:hover i,
+    .resource-card:hover p {
+      color: #fff;
+    }
+
+</style>
