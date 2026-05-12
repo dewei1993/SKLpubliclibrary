@@ -16,7 +16,6 @@ import facility15 from '@/assets/images/facility15.jpg'
 import facility17 from '@/assets/images/facility17.jpg'
 import facility18 from '@/assets/images/facility18.jpg'
 
-
 const facilitiesTrack = ref(null)
 
 const facilities = [
@@ -47,27 +46,23 @@ function scrollFacilities(direction) {
 
   container.scrollBy({
     left: direction * cardWidth * 3,
-    behavior: 'smooth'
+    behavior: 'smooth',
   })
 }
 </script>
 
 <template>
-
+  <div class="facilities-header text-center">
+    <h2>Library Facilities</h2>
+    <div class="facilities-line"></div>
+    <p>
+      Explore the different library spaces designed for reading, research, learning, collaboration,
+      and community engagement.
+    </p>
+  </div>
   <section id="sections" class="about-facilities-section">
     <div class="container">
-
-      <div class="facilities-header text-center">
-        <h2>Library Facilities</h2>
-        <div class="facilities-line"></div>
-        <p>
-          Explore the different library spaces designed for reading, research,
-          learning, collaboration, and community engagement.
-        </p>
-      </div>
-
       <div class="facilities-slider-wrap">
-
         <button
           class="facility-arrow facility-arrow-left"
           type="button"
@@ -77,12 +72,7 @@ function scrollFacilities(direction) {
         </button>
 
         <div class="facilities-track" ref="facilitiesTrack">
-
-          <div
-            v-for="(facility, index) in facilities"
-            :key="index"
-            class="facility-card"
-          >
+          <div v-for="(facility, index) in facilities" :key="index" class="facility-card">
             <img :src="facility.image" :alt="facility.title" />
 
             <div class="facility-overlay">
@@ -90,7 +80,6 @@ function scrollFacilities(direction) {
               <span>{{ facility.category }}</span>
             </div>
           </div>
-
         </div>
 
         <button
@@ -100,25 +89,23 @@ function scrollFacilities(direction) {
         >
           <i class="bi bi-arrow-right"></i>
         </button>
-
       </div>
-
     </div>
   </section>
 </template>
 
-<style>
+<style scoped>
 /* ABOUT FACILITIES */
 .about-facilities-section {
-  background: #fff;
   padding: 90px 0;
-  text-align: center;
+  background: linear-gradient(180deg, #f7f9fc 0%, #ffffff 100%);
+  position: relative;
+  overflow: hidden;
 }
 
 .facilities-header {
-  max-width: 720px;
-  margin: 0 auto 35px;
-  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .facilities-header h2 {
@@ -196,7 +183,7 @@ function scrollFacilities(direction) {
   position: relative;
   overflow: hidden;
   border-top: 5px solid var(--tertiary);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
   cursor: pointer;
 }
 

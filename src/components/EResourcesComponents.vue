@@ -5,58 +5,170 @@ import readLogo from '@/assets/images/e1.png'
 const activeType = ref('subscribed')
 
 const resources = [
+  /* SUBSCRIBED DATABASES */
   {
-    title: "Let's Read",
+    title: 'Britannica Library',
     type: 'subscribed',
     image: readLogo,
     description:
-      'Here is a collection of great books, reading activities, conversation starters, and coloring pages to help children keep learning, growing, and thriving while out of school.'
+      'A comprehensive online reference resource offering curated academic articles, multimedia content, and primary sources across various subjects for students and researchers.',
   },
+
   {
-    title: 'World Book Online',
+    title: 'De Gruyter',
     type: 'subscribed',
     image: readLogo,
     description:
-      'A trusted online encyclopedia and learning resource for students, teachers, researchers, and lifelong learners.'
+      'Provides academic books, journals, and online resources covering humanities, social sciences, medicine, and natural sciences.',
   },
+
+  {
+    title: 'EBSCOhost',
+    type: 'subscribed',
+    image: readLogo,
+    description:
+      'An online research database platform offering access to scholarly journals, e-books, magazines, newspapers, and other educational resources.',
+  },
+
+  {
+    title: 'Emerald Publishing',
+    type: 'subscribed',
+    image: readLogo,
+    description:
+      'Publishes academic books, journals, and research resources focusing on business, management, education, and social sciences.',
+  },
+
+  {
+    title: 'Gale Databases',
+    type: 'subscribed',
+    image: readLogo,
+    description:
+      'Offers digital research databases, e-books, and reference materials covering literature, history, science, and other academic subjects.',
+  },
+
+  {
+    title: 'IG Publishing',
+    type: 'subscribed',
+    image: readLogo,
+    description:
+      'An international digital publisher providing scholarly e-books, journals, teaching materials, and conference proceedings in various disciplines.',
+  },
+
+  {
+    title: 'IGI Global',
+    type: 'subscribed',
+    image: readLogo,
+    description:
+      'Publishes research-based books, journals, and case studies focusing on information technology, business, education, and emerging technologies.',
+  },
+
+  {
+    title: 'MyLegalWhiz',
+    type: 'subscribed',
+    image: readLogo,
+    description:
+      'A legal research and knowledge assistance platform providing AI-supported legal content, research guidance, and legal information services.',
+  },
+
+  {
+    title: 'Oxford University Press',
+    type: 'subscribed',
+    image: readLogo,
+    description:
+      'Provides scholarly books, journals, and digital resources covering humanities, social sciences, medicine, and sciences.',
+  },
+
+  {
+    title: 'PressReader',
+    type: 'subscribed',
+    image: readLogo,
+    description:
+      'An online platform offering access to digital newspapers and magazines from around the world for news and current events.',
+  },
+
+  {
+    title: 'ProQuest Central',
+    type: 'subscribed',
+    image: readLogo,
+    description:
+      'A multidisciplinary research database providing access to scholarly journals, magazines, reports, newspapers, and academic resources.',
+  },
+
+  {
+    title: 'ProQuest Dissertations & Theses Global',
+    type: 'subscribed',
+    image: readLogo,
+    description:
+      'A comprehensive database of dissertations and theses from universities and research institutions worldwide.',
+  },
+
+  {
+    title: 'ProQuest Ebook Central',
+    type: 'subscribed',
+    image: readLogo,
+    description:
+      'An online e-book database providing access to thousands of academic and scholarly e-books across multiple disciplines.',
+  },
+
+  {
+    title: 'Wiley Online Library',
+    type: 'subscribed',
+    image: readLogo,
+    description:
+      'Provides access to scholarly journals, books, and reference materials in science, technology, medicine, business, and social sciences.',
+  },
+
+  {
+    title: 'JSTOR',
+    type: 'subscribed',
+    image: readLogo,
+    description:
+      'A digital library offering academic journals, books, and primary sources covering humanities, social sciences, and sciences.',
+  },
+
+  {
+    title: 'Philippine E-Journals (PeJ)',
+    type: 'subscribed',
+    image: readLogo,
+    description:
+      'A Philippine-based database providing scholarly journals and research publications from academic institutions and organizations across various disciplines.',
+  },
+
+  /* FREE WEB-BASED DATABASES */
   {
     title: 'Open Library',
     type: 'free',
     image: readLogo,
     description:
-      'A free web-based digital library offering access to millions of books and learning materials.'
+      'A free web-based digital library offering access to millions of books and learning materials.',
   },
+
   {
     title: 'Project Gutenberg',
     type: 'free',
     image: readLogo,
-    description:
-      'A free collection of public domain eBooks available for reading and downloading.'
-  }
+    description: 'A free collection of public domain eBooks available for reading and downloading.',
+  },
 ]
 
 const filteredResources = computed(() => {
-  return resources.filter(resource => resource.type === activeType.value)
+  return resources.filter((resource) => resource.type === activeType.value)
 })
 </script>
 
 <template>
+  <div class="resources-page-header text-center">
+    <h1>Library Resources</h1>
+    <p>
+      Access selected digital resources, subscribed databases, and free web-based learning materials
+      for reading, research, and lifelong learning.
+    </p>
+  </div>
   <section class="e-resources-section">
     <div class="container">
-
-      <div class="resources-page-header text-center">
-        <h1>Resources</h1>
-        <p>
-          Access selected digital resources, subscribed databases, and free web-based
-          learning materials for reading, research, and lifelong learning.
-        </p>
-      </div>
-
       <div class="resource-block">
         <div class="e-resource-top">
-          <h3 class="resource-subtitle mb-0">
-            E-Resources
-          </h3>
+          <h3 class="resource-subtitle mb-0">E-Resources</h3>
 
           <div class="resource-filter-buttons">
             <button
@@ -78,11 +190,7 @@ const filteredResources = computed(() => {
         </div>
 
         <div class="eresource-list mt-4">
-          <div
-            v-for="(resource, index) in filteredResources"
-            :key="index"
-            class="eresource-card"
-          >
+          <div v-for="(resource, index) in filteredResources" :key="index" class="eresource-card">
             <img :src="resource.image" :alt="resource.title" />
 
             <div>
@@ -92,17 +200,17 @@ const filteredResources = computed(() => {
             </div>
           </div>
         </div>
-
       </div>
-
     </div>
   </section>
 </template>
 
 <style scoped>
 .e-resources-section {
-  background: #fff;
-  padding: 80px 0;
+  padding: 90px 0;
+  background: linear-gradient(180deg, #f7f9fc 0%, #ffffff 100%);
+  position: relative;
+  overflow: hidden;
 }
 
 .e-resource-top {
@@ -120,23 +228,27 @@ const filteredResources = computed(() => {
 }
 
 .resources-page-header {
-  color: #111;
-  text-align: center;
-  margin-bottom: 80px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.resources-page-header p {
+  max-width: 580px;
+  margin: 12px auto 45px;
+  color: var(--neutral);
+  font-size: 14px;
+  line-height: 1.7;
 }
 
 .resources-page-header h1 {
   color: #111;
-  font-size: clamp(42px, 6vw, 72px);
+  font-size: clamp(34px, 4vw, 52px);
   font-weight: 900;
-  text-transform: uppercase;
-  position: relative;
-  display: inline-block;
-  padding-bottom: 14px;
+  margin-bottom: 10px;
 }
 
 .resources-page-header h1::after {
-  content: "";
+  content: '';
   position: absolute;
   left: 50%;
   bottom: 0;
@@ -157,7 +269,7 @@ const filteredResources = computed(() => {
 }
 
 .resource-subtitle::after {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   bottom: 0;

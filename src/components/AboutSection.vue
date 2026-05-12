@@ -19,7 +19,7 @@ const aboutData = {
 • To cultivate innovation and opportunities that enhance the community and raise educational standards;
 • To serve as a community education provider and open platform for sharing information freely while addressing user needs;
 • To promote and share cultural heritage through traditions, spaces, and artifacts;
-• To protect and preserve the cultural heritage of communities, big or small.`
+• To protect and preserve the cultural heritage of communities, big or small.`,
 }
 
 function changeTab(tab) {
@@ -35,7 +35,6 @@ function truncateText(text, words = 50) {
   <section id="about">
     <div class="container">
       <div class="row align-items-center g-4">
-
         <!-- IMAGE -->
         <div class="col-lg-5">
           <div class="about-image">
@@ -52,13 +51,10 @@ function truncateText(text, words = 50) {
           <div class="about-panel">
             <div class="section-title-top">About Us</div>
 
-            <h2 class="section-title">
-              Sentro ng Karunungan Library
-            </h2>
+            <h2 class="section-title">Sentro ng Karunungan Library</h2>
 
             <!-- TABS -->
             <div class="tabs-wrap mb-3">
-
               <button
                 class="btn btn-outline-primary about-tab"
                 :class="{ active: activeTab === 'mission' }"
@@ -90,118 +86,93 @@ function truncateText(text, words = 50) {
               >
                 Objectives
               </button>
-
             </div>
 
             <!-- TAB CONTENT -->
             <div class="content-box">
               {{ truncateText(aboutData[activeTab], 60) }}
             </div>
-
           </div>
         </div>
-
       </div>
     </div>
   </section>
 </template>
 
-<style>
+<style scoped>
+.about-image {
+  position: relative;
+  height: 500px;
+  border: 8px solid #fff;
+  box-shadow: var(--shadow);
+  border-radius: 8px;
+  overflow: hidden;
+}
 
-    section {
-      padding: 80px 0;
-    }
+/* QUOTE OVERLAY */
+.about-quote {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  max-width: 70%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-style: italic;
+  border-left: 4px solid var(--tertiary);
+  border-radius: 4px;
+}
 
-    .section-title-top {
-      color: var(--secondary);
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
+.about-panel {
+  padding-left: 20px;
+}
 
-    .section-title {
-      color: var(--primary);
-      font-weight: 900;
-      text-transform: uppercase;
-      font-size: clamp(28px, 3.5vw, 46px);
-      margin-bottom: 20px;
-    }
+.content-box {
+  white-space: pre-line;
+}
 
-    .about-image {
-      position: relative;
-      height: 500px;
-      border: 8px solid #fff;
-      box-shadow: var(--shadow);
-      border-radius: 8px;
-      overflow: hidden;
-    }
+/* Default */
+.tabs-wrap .btn {
+  border-radius: 8px;
+  font-weight: 700;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 10px 18px;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  background: transparent;
+  transition: 0.3s ease;
+}
 
-    /* QUOTE OVERLAY */
-    .about-quote {
-      position: absolute;
-      bottom: 15px;
-      left: 15px;
-      max-width: 70%;
-      background: rgba(0, 0, 0, 0.6);
-      color: #fff;
-      padding: 10px 14px;
-      font-size: 13px;
-      font-style: italic;
-      border-left: 4px solid var(--tertiary);
-      border-radius: 4px;
-    }
+/* Hover = SECONDARY */
+.tabs-wrap .btn:hover {
+  background: var(--secondary);
+  border-color: var(--secondary);
+  color: #fff;
+  transform: translateY(-2px);
+}
 
-    .about-panel {
-      padding-left: 20px;
-    }
+/* Active = PRIMARY */
+.tabs-wrap .btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
 
-    .content-box {
-      white-space: pre-line;
-    }
+/* Prevent hover from overriding active */
+.tabs-wrap .btn.active:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
 
-        /* Default */
-    .tabs-wrap .btn {
-      border-radius: 8px;
-      font-weight: 700;
-      margin-right: 10px;
-      margin-bottom: 10px;
-      padding: 10px 18px;
-      border: 2px solid var(--primary);
-      color: var(--primary);
-      background: transparent;
-      transition: 0.3s ease;
-    }
-
-
-    /* Hover = SECONDARY */
-    .tabs-wrap .btn:hover {
-      background: var(--secondary);
-      border-color: var(--secondary);
-      color: #fff;
-      transform: translateY(-2px);
-    }
-
-    /* Active = PRIMARY */
-    .tabs-wrap .btn.active {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: #fff;
-    }
-
-    /* Prevent hover from overriding active */
-    .tabs-wrap .btn.active:hover {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: #fff;
-    }
-
-    .content-box {
-      border: 4px solid var(--primary);
-      padding: 26px;
-      font-size: 18px;
-      line-height: 1.7;
-      background: #fff;
-      min-height: 250px;
-    }
-
-
+.content-box {
+  border: 4px solid var(--primary);
+  padding: 26px;
+  font-size: 18px;
+  line-height: 1.7;
+  background: #fff;
+  min-height: 250px;
+}
 </style>

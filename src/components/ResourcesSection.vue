@@ -14,18 +14,7 @@ import e10 from '@/assets/images/e10.png'
 
 const resourceTrack = ref(null)
 
-const resources = [
-  e1,
-  e2,
-  e3,
-  e4,
-  e5,
-  e6,
-  e7,
-  e8,
-  e9,
-  e10
-]
+const resources = [e1, e2, e3, e4, e5, e6, e7, e8, e9, e10]
 
 function scrollResources(direction) {
   const container = resourceTrack.value
@@ -40,7 +29,7 @@ function scrollResources(direction) {
 
   container.scrollBy({
     left: direction * cardWidth,
-    behavior: 'smooth'
+    behavior: 'smooth',
   })
 }
 </script>
@@ -51,27 +40,20 @@ function scrollResources(direction) {
       <!-- HEADER -->
       <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
-          <div class="section-title-top">
-            E-Resources
-          </div>
-          <h2 class="resources-title-main">
-            OPEN EDUCATIONAL RESOURCES
-          </h2>
+          <div class="section-title-top">E-Resources</div>
+          <h2 class="section-title text-uppercase">OPEN EDUCATIONAL RESOURCES</h2>
           <p class="resources-subtext">
-            Access a curated digital environment of
-            open-license materials, textbooks,
-            and peer-reviewed research.
+            Access a curated digital environment of open-license materials, textbooks, and
+            peer-reviewed research.
           </p>
         </div>
         <!-- ARROWS -->
         <div class="resource-controls">
-          <button class="btn-nav"
-            @click="scrollResources(-1)">
+          <button class="btn-nav" @click="scrollResources(-1)">
             <i class="bi bi-arrow-left"></i>
           </button>
 
-          <button class="btn-nav"
-            @click="scrollResources(1)">
+          <button class="btn-nav" @click="scrollResources(1)">
             <i class="bi bi-arrow-right"></i>
           </button>
         </div>
@@ -79,14 +61,8 @@ function scrollResources(direction) {
 
       <!-- CARDS -->
       <div class="resource-track" ref="resourceTrack">
-        <div
-          v-for="(resource, index) in resources"
-          :key="index"
-          class="resource-card">
-          <img
-            :src="resource"
-            class="resource-logo"
-            alt="E-Resources">
+        <div v-for="(resource, index) in resources" :key="index" class="resource-card">
+          <img :src="resource" class="resource-logo" alt="E-Resources" />
         </div>
       </div>
     </div>
@@ -94,106 +70,103 @@ function scrollResources(direction) {
 </template>
 
 <style>
+.resources-section {
+  background: #f4f6f8;
+  padding: 70px 0;
+}
 
+.resources-title-main {
+  font-weight: 900;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
 
-    .resources-section {
-      background: #f4f6f8;
-      padding: 70px 0;
-    }
+.resources-subtext {
+  color: var(--neutral);
+  max-width: 500px;
+  font-size: 14px;
+}
 
-    .resources-title-main {
-      font-weight: 900;
-      color: var(--primary);
-      margin-bottom: 8px;
-    }
+/* Controls */
+.resource-controls {
+  display: flex;
+  gap: 10px;
+}
 
-    .resources-subtext {
-      color: var(--neutral);
-      max-width: 500px;
-      font-size: 14px;
-    }
+.btn-nav {
+  width: 42px;
+  height: 42px;
+  border: none;
+  background: #e0e0e0;
+  border-radius: 4px;
+  transition: 0.3s;
+}
 
-    /* Controls */
-    .resource-controls {
-      display: flex;
-      gap: 10px;
-    }
+.btn-nav:hover {
+  background: var(--primary);
+  color: #fff;
+}
 
-    .btn-nav {
-      width: 42px;
-      height: 42px;
-      border: none;
-      background: #e0e0e0;
-      border-radius: 4px;
-      transition: 0.3s;
-    }
+/* Cards layout */
+.resource-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-top: 10px;
+  cursor: grab;
+}
 
-    .btn-nav:hover {
-      background: var(--primary);
-      color: #fff;
-    }
+.resource-track.dragging {
+  cursor: grabbing;
+}
 
-    /* Cards layout */
-    .resource-track {
-      display: flex;
-      gap: 20px;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      padding-top: 10px;
-      cursor: grab;
-    }
+.resource-track::-webkit-scrollbar {
+  display: none;
+}
 
-    .resource-track.dragging {
-      cursor: grabbing;
-    }
+/* Card */
+.resource-card {
+  min-width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
 
-    .resource-track::-webkit-scrollbar {
-      display: none;
-    }
+.resource-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
 
-    /* Card */
-    .resource-card {
-      min-width: 200px;
-      height: 200px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      border-radius: 6px;
-      text-align: center;
-      cursor: pointer;
-      transition: 0.3s ease;
-    }
+.resource-card:hover .resource-logo {
+  filter: grayscale(0%);
+}
 
-    .resource-logo {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      margin-bottom: 10px;
-    }
+/* Hover effect */
+.resource-card:hover h6 {
+  color: #fff;
+}
 
-    .resource-card:hover .resource-logo {
-      filter: grayscale(0%);
-    }
+.resource-card p {
+  margin: 0;
+  font-weight: 600;
+  color: #333;
+}
 
-    /* Hover effect */
-    .resource-card:hover h6 {
-      color: #fff;
-    }
+.resource-card:hover {
+  transform: translateY(-4px);
+}
 
-    .resource-card p {
-      margin: 0;
-      font-weight: 600;
-      color: #333;
-    }
-
-    .resource-card:hover {
-      transform: translateY(-4px);
-    }
-
-    .resource-card:hover i,
-    .resource-card:hover p {
-      color: #fff;
-    }
-
+.resource-card:hover i,
+.resource-card:hover p {
+  color: #fff;
+}
 </style>

@@ -1,26 +1,18 @@
 <template>
+  <!-- HEADER -->
+  <div class="services-header text-center">
+    <h2>Library Services</h2>
+    <div class="services-line"></div>
+    <p class="services-description mx-auto">
+      We provide accessible library services designed to support learning, research, reading, and
+      community development.
+    </p>
+  </div>
   <section class="services-section">
     <div class="container">
-
-      <!-- HEADER -->
-      <div class="services-header text-center">
-        <h2>OUR SERVICES</h2>
-        <div class="services-line"></div>
-
-        <p class="services-description mx-auto">
-          We provide accessible library services designed to support learning,
-          research, reading, and community development.
-        </p>
-      </div>
-
       <!-- SERVICES CAROUSEL -->
-      <div
-        id="servicesCarousel"
-        class="carousel slide"
-        data-bs-ride="carousel"
-      >
+      <div id="servicesCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-
           <div
             v-for="(group, index) in serviceGroups"
             :key="index"
@@ -28,18 +20,9 @@
             :class="{ active: index === 0 }"
           >
             <div class="row g-4 justify-content-center">
-
-              <div
-                v-for="service in group"
-                :key="service.id"
-                class="col-lg-4 col-md-6"
-              >
+              <div v-for="service in group" :key="service.id" class="col-lg-4 col-md-6">
                 <div class="service-card h-100">
-                  <img
-                    :src="service.image"
-                    :alt="service.title"
-                    class="service-image"
-                  >
+                  <img :src="service.image" :alt="service.title" class="service-image" />
 
                   <div class="service-content">
                     <div class="service-icon">
@@ -63,10 +46,8 @@
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
-
         </div>
 
         <!-- CAROUSEL CONTROLS -->
@@ -102,7 +83,6 @@
           ></button>
         </div>
       </div>
-
     </div>
 
     <!-- MODAL -->
@@ -115,7 +95,6 @@
     >
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content service-modal">
-
           <div class="modal-header">
             <h5 class="modal-title" id="serviceModalLabel">
               {{ selectedService?.title }}
@@ -129,44 +108,30 @@
             ></button>
           </div>
 
-       <div class="modal-body text-center">
+          <div class="modal-body text-center">
+            <img
+              :src="selectedService?.image"
+              :alt="selectedService?.title"
+              class="modal-service-image"
+            />
 
-        <img
-            :src="selectedService?.image"
-            :alt="selectedService?.title"
-            class="modal-service-image"
-        >
+            <p class="modal-text">
+              {{ selectedService?.modalText }}
+            </p>
 
-        <p class="modal-text">
-            {{ selectedService?.modalText }}
-        </p>
+            <img :src="selectedService?.qrCode" alt="QR Code" class="qr-code" />
 
-        <img
-            :src="selectedService?.qrCode"
-            alt="QR Code"
-            class="qr-code"
-        >
+            <p class="scan-text">Scan this QR code to book this service.</p>
 
-        <p class="scan-text">
-            Scan this QR code to book this service.
-        </p>
-
-        <!-- GOOGLE FORM BUTTON -->
-        <a
-            :href="selectedService?.googleForm"
-            target="_blank"
-            class="google-form-btn"
-        >
-            <i class="bi bi-google"></i>
-            Open Google Form
-        </a>
-
-        </div>
-
+            <!-- GOOGLE FORM BUTTON -->
+            <a :href="selectedService?.googleForm" target="_blank" class="google-form-btn">
+              <i class="bi bi-google"></i>
+              Open Google Form
+            </a>
+          </div>
         </div>
       </div>
     </div>
-
   </section>
 </template>
 
@@ -196,82 +161,98 @@ const services = [
     id: 1,
     title: 'Book Reservation',
     icon: 'bi bi-book-fill',
-    description: 'Reserve books online and pick them up at the library once your request is processed.',
-    modalText: 'Book Reservation allows users to reserve available library materials for pickup at Sentro ng Karunungan Library.',
+    description:
+      'Reserve books online and pick them up at the library once your request is processed.',
+    modalText:
+      'Book Reservation allows users to reserve available library materials for pickup at Sentro ng Karunungan Library.',
     image: services1,
     qrCode: qr1,
-    googleForm: 'https://forms.gle/YOUR_FORM_LINK'
+    googleForm: 'https://forms.gle/YOUR_FORM_LINK',
   },
   {
     id: 2,
     title: 'Discussion Room Reservation',
     icon: 'bi bi-people-fill',
-    description: 'Reserve a discussion room for group study, collaboration, meetings, or learning activities.',
-    modalText: 'Discussion Room Reservation is available for users who need a quiet space for study, collaboration, and group learning.',
+    description:
+      'Reserve a discussion room for group study, collaboration, meetings, or learning activities.',
+    modalText:
+      'Discussion Room Reservation is available for users who need a quiet space for study, collaboration, and group learning.',
     image: services2,
     qrCode: qr2,
-    googleForm: 'https://forms.gle/YOUR_FORM_LINK'
+    googleForm: 'https://forms.gle/YOUR_FORM_LINK',
   },
   {
     id: 3,
     title: 'Online Document Delivery Service',
     icon: 'bi bi-envelope-paper-fill',
-    description: 'Request online journal articles, book chapters, and research materials through email assistance.',
-    modalText: 'Online Document Delivery Service helps researchers access digital materials such as articles, chapters, and other academic resources.',
+    description:
+      'Request online journal articles, book chapters, and research materials through email assistance.',
+    modalText:
+      'Online Document Delivery Service helps researchers access digital materials such as articles, chapters, and other academic resources.',
     image: services3,
     qrCode: qr3,
-    googleForm: 'https://forms.gle/YOUR_FORM_LINK'
+    googleForm: 'https://forms.gle/YOUR_FORM_LINK',
   },
   {
     id: 4,
     title: 'Research Assistance',
     icon: 'bi bi-search',
-    description: 'Get guidance in finding reliable resources, citations, references, and research information.',
-    modalText: 'Research Assistance provides support in locating relevant resources, citations, and information for academic and personal research.',
+    description:
+      'Get guidance in finding reliable resources, citations, references, and research information.',
+    modalText:
+      'Research Assistance provides support in locating relevant resources, citations, and information for academic and personal research.',
     image: services4,
     qrCode: qr4,
-    googleForm: 'https://forms.gle/YOUR_FORM_LINK'
+    googleForm: 'https://forms.gle/YOUR_FORM_LINK',
   },
   {
     id: 5,
     title: 'E-Government Registration Assistance',
     icon: 'bi bi-person-badge-fill',
-    description: 'Receive assistance in online registration for selected government services and platforms.',
-    modalText: 'E-Government Registration Assistance supports users who need help accessing and registering for selected online government services.',
+    description:
+      'Receive assistance in online registration for selected government services and platforms.',
+    modalText:
+      'E-Government Registration Assistance supports users who need help accessing and registering for selected online government services.',
     image: services5,
     qrCode: qr5,
-    googleForm: 'https://forms.gle/YOUR_FORM_LINK'
+    googleForm: 'https://forms.gle/YOUR_FORM_LINK',
   },
   {
     id: 6,
     title: 'Free Lamination Service',
     icon: 'bi bi-card-heading',
-    description: 'Avail free lamination service for selected IDs, cards, certificates, and important documents.',
-    modalText: 'Free Lamination Service helps preserve selected personal documents, IDs, cards, and certificates.',
+    description:
+      'Avail free lamination service for selected IDs, cards, certificates, and important documents.',
+    modalText:
+      'Free Lamination Service helps preserve selected personal documents, IDs, cards, and certificates.',
     image: services6,
     qrCode: qr6,
-    googleForm: 'https://forms.gle/YOUR_FORM_LINK'
+    googleForm: 'https://forms.gle/YOUR_FORM_LINK',
   },
   {
     id: 7,
     title: 'Free Tutorial for Children',
     icon: 'bi bi-mortarboard-fill',
-    description: 'Free learning support for children in reading, writing, counting, arts, crafts, and computer basics.',
-    modalText: 'Free Tutorial for Children supports young learners through basic reading, writing, counting, creativity, and computer literacy activities.',
+    description:
+      'Free learning support for children in reading, writing, counting, arts, crafts, and computer basics.',
+    modalText:
+      'Free Tutorial for Children supports young learners through basic reading, writing, counting, creativity, and computer literacy activities.',
     image: services7,
     qrCode: qr7,
-    googleForm: 'https://forms.gle/YOUR_FORM_LINK'
+    googleForm: 'https://forms.gle/YOUR_FORM_LINK',
   },
   {
     id: 8,
     title: 'Library Tour',
     icon: 'bi bi-building-fill',
-    description: 'Explore the library spaces, collections, services, and learning areas through a guided tour.',
-    modalText: 'Library Tour introduces visitors to the library facilities, available collections, services, and community learning spaces.',
+    description:
+      'Explore the library spaces, collections, services, and learning areas through a guided tour.',
+    modalText:
+      'Library Tour introduces visitors to the library facilities, available collections, services, and community learning spaces.',
     image: services8,
     qrCode: qr8,
-    googleForm: 'https://forms.gle/YOUR_FORM_LINK'
-  }
+    googleForm: 'https://forms.gle/YOUR_FORM_LINK',
+  },
 ]
 
 const selectedService = ref(services[0])
@@ -289,14 +270,16 @@ const serviceGroups = computed(() => {
 
 <style scoped>
 .services-section {
-  padding: 100px 0;
-  background: #fff;
+  padding: 90px 0;
+  background: linear-gradient(180deg, #f7f9fc 0%, #ffffff 100%);
+  position: relative;
   overflow: hidden;
 }
 
 /* HEADER */
 .services-header {
-  margin-bottom: 70px;
+  margin-bottom: 50px;
+  margin-top: 50px;
 }
 
 .services-header h2 {
@@ -306,7 +289,6 @@ const serviceGroups = computed(() => {
   margin-bottom: 10px;
 }
 
-/* SAME PURPLE LINE FROM ABOUT BRIEF HISTORY */
 .services-line {
   width: 70px;
   height: 4px;

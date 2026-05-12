@@ -5,10 +5,7 @@ import books from '@/data/books.json'
 const search = ref('')
 
 const filteredBooks = computed(() => {
-
-  const keyword = search.value
-    .toLowerCase()
-    .trim()
+  const keyword = search.value.toLowerCase().trim()
 
   if (!keyword) {
     return books
@@ -17,8 +14,7 @@ const filteredBooks = computed(() => {
   // SPLIT MULTIPLE KEYWORDS
   const keywords = keyword.split(' ')
 
-  return books.filter(book => {
-
+  return books.filter((book) => {
     // COMBINE ALL SEARCHABLE FIELDS
     const searchableText = `
       ${book.callNumber}
@@ -26,35 +22,23 @@ const filteredBooks = computed(() => {
       ${book.author}
       ${book.location}
       ${book.copyright}
-    `
-    .toLowerCase()
+    `.toLowerCase()
 
     // EVERY KEYWORD MUST MATCH
-    return keywords.every(word =>
-      searchableText.includes(word)
-    )
-
+    return keywords.every((word) => searchableText.includes(word))
   })
-
 })
 </script>
 
 <template>
+  <div class="resources-page-header text-center">
+    <h1>Library Resources</h1>
+    <p>Search library records by call number, title, author, location, or copyright year.</p>
+  </div>
   <section class="opac-section">
     <div class="container">
-
-      <div class="resources-page-header text-center">
-        <h1>Resources</h1>
-        <p>
-          Search library records by call number, title, author, location, or copyright year.
-        </p>
-      </div>
-
       <div class="opac-block">
-        <h3 class="resource-subtitle">
-          Online Public Access Catalog (OPAC)
-        </h3>
-
+        <h3 class="resource-subtitle">Online Public Access Catalog (OPAC)</h3>
         <div class="opac-search-wrap">
           <input
             v-model="search"
@@ -62,11 +46,7 @@ const filteredBooks = computed(() => {
             placeholder="Search author, title, keywords, call number..."
           />
         </div>
-
-        <p class="opac-note">
-          Search the library collection using keywords.
-        </p>
-
+        <p class="opac-note">Search the library collection using keywords.</p>
         <div class="opac-table-box">
           <div class="table-responsive">
             <table class="table opac-table align-middle">
@@ -81,10 +61,7 @@ const filteredBooks = computed(() => {
               </thead>
 
               <tbody>
-                <tr
-                  v-for="(book, index) in filteredBooks"
-                  :key="index"
-                >
+                <tr v-for="(book, index) in filteredBooks" :key="index">
                   <td>{{ book.callNumber }}</td>
                   <td>{{ book.title }}</td>
                   <td>{{ book.author }}</td>
@@ -93,39 +70,39 @@ const filteredBooks = computed(() => {
                 </tr>
 
                 <tr v-if="filteredBooks.length === 0">
-                  <td colspan="5" class="text-center no-result">
-                    No matching book found.
-                  </td>
+                  <td colspan="5" class="text-center no-result">No matching book found.</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
-
       </div>
-
     </div>
   </section>
 </template>
 
 <style scoped>
 .opac-section {
-  background: #fff;
-  padding: 80px 0;
+  padding: 90px 0;
+  background: linear-gradient(180deg, #f7f9fc 0%, #ffffff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.resources-page-header {
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .resources-page-header h1 {
   color: #111;
-  font-size: clamp(42px, 6vw, 72px);
+  font-size: clamp(34px, 4vw, 52px);
   font-weight: 900;
-  text-transform: uppercase;
-  position: relative;
-  display: inline-block;
-  padding-bottom: 14px;
+  margin-bottom: 10px;
 }
 
 .resources-page-header h1::after {
-  content: "";
+  content: '';
   position: absolute;
   left: 50%;
   bottom: 0;
@@ -159,7 +136,7 @@ const filteredBooks = computed(() => {
 }
 
 .resource-subtitle::after {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   bottom: 0;
@@ -254,8 +231,4 @@ const filteredBooks = computed(() => {
   color: var(--secondary);
   font-weight: 800;
 }
-
-
-
-
 </style>
