@@ -82,27 +82,26 @@ function scrollServices(direction) {
         <div class="section-title-top">Events</div>
         <h2 class="section-title text-uppercase">Activities and Programs</h2>
       </div>
+
       <div class="row g-4 align-items-stretch">
-        <!-- LEFT FEATURED EVENT -->
         <div class="col-lg-8">
           <div class="featured-news-card">
             <div class="featured-news-image">
               <img :src="featuredActivity.img" alt="Featured Event" />
             </div>
+
             <div class="featured-news-content">
-              <span class="featured-label"> FEATURED EVENT </span>
-              <h2>
-                {{ featuredActivity.title }}
-              </h2>
-              <p>
-                {{ featuredActivity.desc }}
-              </p>
-              <a href="#" class="readmore-btn"> Read More </a>
+              <span class="featured-label">FEATURED EVENT</span>
+
+              <h2>{{ featuredActivity.title }}</h2>
+
+              <p>{{ featuredActivity.desc }}</p>
+
+              <a href="#" class="readmore-btn">Read More</a>
             </div>
           </div>
         </div>
 
-        <!-- RIGHT EVENT LIST -->
         <div class="col-lg-4">
           <div class="event-list">
             <div
@@ -119,7 +118,7 @@ function scrollServices(direction) {
                 {{ activity.title }}
               </h5>
 
-              <a href="#" @click.prevent> Details </a>
+              <a href="#" @click.prevent>Details</a>
             </div>
           </div>
         </div>
@@ -130,23 +129,43 @@ function scrollServices(direction) {
   <!-- LIBRARY SERVICES SECTION -->
   <section id="library-services" class="library-services-section">
     <div class="container">
-      <div class="services-header text-center">
+      <div class="services-header">
         <div class="section-title-top">SERVICES</div>
+
         <h2 class="section-title text-uppercase">Library Services</h2>
+
         <p class="services-subtitle">
           Providing the tools and environments necessary for academic success and lifelong learning.
         </p>
       </div>
-      <div class="services-slider-wrap">
-        <button
-          class="services-arrow services-arrow-left"
-          type="button"
-          aria-label="Previous services"
-          @click="scrollServices(-1)"
-        >
-          <i class="bi bi-arrow-left"></i>
-        </button>
 
+      <!-- ARROWS TOP RIGHT -->
+      <div class="services-top-controls">
+        <div></div>
+
+        <div class="services-arrow-group">
+          <button
+            class="services-arrow"
+            type="button"
+            aria-label="Previous services"
+            @click="scrollServices(-1)"
+          >
+            <i class="bi bi-arrow-left"></i>
+          </button>
+
+          <button
+            class="services-arrow"
+            type="button"
+            aria-label="Next services"
+            @click="scrollServices(1)"
+          >
+            <i class="bi bi-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- SLIDER BELOW ARROWS -->
+      <div class="services-slider-wrap">
         <div class="services-track" ref="servicesTrack">
           <div
             v-for="(service, index) in serviceImages"
@@ -158,15 +177,8 @@ function scrollServices(direction) {
             </div>
           </div>
         </div>
-        <button
-          class="services-arrow services-arrow-right"
-          type="button"
-          aria-label="Next services"
-          @click="scrollServices(1)"
-        >
-          <i class="bi bi-arrow-right"></i>
-        </button>
       </div>
+
       <div class="service-poster-content text-center">
         <RouterLink to="/services" class="service-poster-btn"> BOOK NOW </RouterLink>
       </div>
@@ -174,7 +186,11 @@ function scrollServices(direction) {
   </section>
 </template>
 
-<style>
+<style scoped>
+/* =========================================
+   EVENTS SECTION
+========================================= */
+
 .news-events-section {
   background: #fff;
   padding: 70px 0;
@@ -290,45 +306,56 @@ function scrollServices(direction) {
   color: #fff;
 }
 
-@media (max-width: 991.98px) {
-  .featured-news-card {
-    grid-template-columns: 1fr;
-  }
-
-  .featured-news-image {
-    min-height: 300px;
-  }
-}
+/* =========================================
+   SERVICES SECTION
+========================================= */
 
 .library-services-section {
   background: #fff;
-  padding: 80px 0;
+  padding: 90px 0;
 }
 
 .services-header {
-  max-width: 680px;
-  margin: 0 auto 40px;
+  margin-bottom: 30px;
 }
 
 .services-title {
   color: var(--primary);
-  font-size: clamp(30px, 4vw, 48px);
-  font-weight: 800;
-  margin-bottom: 10px;
+  font-size: clamp(34px, 5vw, 54px);
+  font-weight: 900;
+  margin-bottom: 12px;
 }
 
 .services-subtitle {
   color: var(--neutral);
   font-size: 15px;
-  line-height: 1.7;
-  margin: 0;
+  line-height: 1.8;
+  max-width: 620px;
 }
+
+/* =========================================
+   TOP RIGHT ARROWS
+========================================= */
+
+.services-top-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.services-arrow-group {
+  display: flex;
+  gap: 12px;
+}
+
+/* =========================================
+   SLIDER
+========================================= */
 
 .services-slider-wrap {
   position: relative;
-  display: flex;
-  align-items: center;
-  gap: 14px;
+  overflow: hidden;
 }
 
 .services-track {
@@ -337,98 +364,143 @@ function scrollServices(direction) {
   overflow-x: auto;
   scroll-behavior: smooth;
   cursor: grab;
-}
-
-.services-track.dragging {
-  cursor: grabbing;
-  scroll-behavior: auto;
+  scrollbar-width: none;
+  padding-bottom: 10px;
 }
 
 .services-track::-webkit-scrollbar {
   display: none;
 }
 
-.service-card-poster {
-  width: 100%;
-  max-width: 420px;
-  background: #fff;
-  overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  margin: auto;
-  flex: 0 0 calc((100% - 48px) / 3); /* 3 cards */
-  max-width: calc((100% - 48px) / 3);
+.services-track.dragging {
+  cursor: grabbing;
 }
 
-/* IMAGE SIZE (KEY PART 🔥) */
+/* =========================================
+   CARD
+========================================= */
+
+.service-card-poster {
+  flex: 0 0 calc((100% - 48px) / 3);
+  max-width: calc((100% - 48px) / 3);
+  background: #fff;
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.08),
+    0 3px 10px rgba(0, 0, 0, 0.04);
+  transition: 0.35s ease;
+}
+
+.service-card-poster:hover {
+  transform: translateY(-6px);
+}
+
+/* =========================================
+   IMAGE
+========================================= */
+
 .service-poster-image {
   width: 100%;
-  aspect-ratio: 4 / 3; /* matches your image */
-  background: #ddd;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
 }
 
 .service-poster-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* fills like poster */
+  object-fit: cover;
+  transition: 0.45s ease;
+}
+
+.service-card-poster:hover .service-poster-image img {
+  transform: scale(1.06);
+}
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.service-poster-content {
+  margin-top: 28px;
 }
 
 .service-poster-btn {
   background: var(--primary);
   color: #fff;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 18px;
-  padding: 8px 20px;
-  border-radius: 0;
+  padding: 10px 26px;
+  border-radius: 8px;
   text-decoration: none;
   display: inline-block;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  transition: 0.3s ease;
 }
 
 .service-poster-btn:hover {
   background: var(--secondary);
   color: #fff;
+  transform: translateY(-2px);
 }
 
+/* =========================================
+   ARROWS
+========================================= */
+
 .services-arrow {
-  width: 46px;
-  height: 46px;
+  width: 52px;
+  height: 52px;
   border: none;
   border-radius: 50%;
-  background: #fff;
-  color: var(--primary);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-  flex-shrink: 0;
+  background: var(--primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
   transition: 0.3s ease;
 }
 
 .services-arrow:hover {
-  background: var(--primary);
-  color: #fff;
+  background: var(--secondary);
+  transform: translateY(-2px);
 }
 
-@media (max-width: 767.98px) {
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 991px) {
+  .featured-news-card {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-news-image {
+    min-height: 300px;
+  }
+
   .service-card-poster {
-    min-width: 300px;
-    max-width: 300px;
+    flex: 0 0 calc((100% - 24px) / 2);
+    max-width: calc((100% - 24px) / 2);
+  }
+}
+
+@media (max-width: 767px) {
+  .services-top-controls {
+    justify-content: flex-end;
   }
 
-  .service-poster-image {
-    height: 340px;
+  .service-card-poster {
+    flex: 0 0 100%;
+    max-width: 100%;
   }
 
-  .service-poster-content h3 {
-    font-size: 26px;
+  .services-title {
+    font-size: 36px;
   }
 
-  .service-stars {
-    font-size: 30px;
-    letter-spacing: 4px;
-  }
-
-  .service-poster-btn {
-    font-size: 18px;
-    padding: 14px 26px;
+  .featured-news-content {
+    padding: 28px;
   }
 }
 </style>

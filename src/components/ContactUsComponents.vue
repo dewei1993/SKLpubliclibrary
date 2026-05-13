@@ -102,8 +102,8 @@
 /* REMOVE TOP SPACE */
 .contact-page {
   background: #c9cfd1;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .contact-hero {
