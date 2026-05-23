@@ -38,7 +38,6 @@ const routes = [
     name: 'contact',
     component: ContactView
   }
-
 ]
 
 const router = createRouter({

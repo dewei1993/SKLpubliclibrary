@@ -4,6 +4,7 @@
     <div class="contact-hero">
       <div class="container">
         <h1>Contact</h1>
+            <div class="services-line"></div>
         <p>
           Connect with us for more information about our library services, programs, and community
           resources.
@@ -88,7 +89,6 @@
             width="100%"
             height="420"
             style="border: 0"
-            allowfullscreen=""
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
@@ -104,6 +104,14 @@
   background: #c9cfd1;
   padding-top: 0;
   padding-bottom: 0;
+}
+
+.services-line {
+  width: 70px;
+  height: 4px;
+  background: var(--tertiary);
+  border-radius: 50px;
+  margin: 0 auto 22px 0;
 }
 
 .contact-hero {
@@ -155,7 +163,7 @@
   display: block;
   text-transform: uppercase;
   font-size: 11px;
-  color: #7c806f;
+  color: var(--secondary);
   letter-spacing: 1.4px;
   margin-bottom: 12px;
 }
@@ -176,7 +184,7 @@
   letter-spacing: 1.6px;
   font-size: 11px;
   font-weight: 900;
-  color: var(--primary);
+  color: var(--secondary);
   margin-bottom: 14px;
 }
 

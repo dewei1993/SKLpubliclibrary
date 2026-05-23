@@ -1,154 +1,348 @@
 <script setup>
 import { ref, computed } from 'vue'
-import readLogo from '@/assets/images/e1.png'
+import BritannicaLibrary from '@/assets/images/ser1.png'
+import DeGruyter from '@/assets/images/ser2.png'
+import EBSCOHost from '@/assets/images/ser3.png'
+import EmeraldPublishing from '@/assets/images/ser4.png'
+import GaleDatabases from '@/assets/images/ser5.png'
+import IGPublishing from '@/assets/images/ser6.png'
+import IGIGlobal from '@/assets/images/ser7.png'
+import MyLegalWhiz from '@/assets/images/ser8.png'
+import OxfordUniversityPress from '@/assets/images/ser9.png'
+import PressReader from '@/assets/images/ser10.png'
+import ProQuestCentral from '@/assets/images/ser11.png'
+import ProQuestDissertationsAndThesesGlobal from '@/assets/images/ser12.png'
+import ProQuestEbookCentral from '@/assets/images/ser13.png'
+import Wiley from '@/assets/images/ser14.png'
+import JSTOR from '@/assets/images/ser15.png'
+import PhilippineEJournals from '@/assets/images/ser16.png'
+
+import Teknoaklatan from '@/assets/images/fer1.png'
+import KWFDiksyonaryongFilipino from '@/assets/images/fer2.png'
+import ActaMedicaPhilippina from '@/assets/images/fer3.png'
+import UNDigitalLibrary from '@/assets/images/fer4.png'
+import UNESCODigitalLibrary from '@/assets/images/fer5.png'
+import STARBOOKS from '@/assets/images/fer6.png'
+import PIDS from '@/assets/images/fer7.png'
+import SERPP from '@/assets/images/fer8.png'
+import InternationalChildrensDigitalLibrary from '@/assets/images/fer9.png'
+import LetsReadAsia from '@/assets/images/fer10.png'
+import BloomLibrary from '@/assets/images/fer11.png'
+import ERIC from '@/assets/images/fer12.png'
+import ProjectGutenberg from '@/assets/images/fer13.png'
+import GoogleNewsArchive from '@/assets/images/fer14.png'
+import InternetArchive from '@/assets/images/fer15.png'
+import PhilippineJournalOfScience from '@/assets/images/fer16.png'
+import CambridgeOpenAccess from '@/assets/images/fer17.png'
+import AccessibleBooksConsortium from '@/assets/images/fer18.png'
+import FamilySearch from '@/assets/images/fer19.png'
+import HathiTrust from '@/assets/images/fer20.png'
+import DOAJ from '@/assets/images/fer21.png'
+
 
 const activeType = ref('subscribed')
 
 const resources = [
   /* SUBSCRIBED DATABASES */
-  {
-    title: 'Britannica Library',
-    type: 'subscribed',
-    image: readLogo,
-    description:
-      'A comprehensive online reference resource offering curated academic articles, multimedia content, and primary sources across various subjects for students and researchers.',
-  },
-
-  {
-    title: 'De Gruyter',
-    type: 'subscribed',
-    image: readLogo,
-    description:
-      'Provides academic books, journals, and online resources covering humanities, social sciences, medicine, and natural sciences.',
-  },
-
-  {
-    title: 'EBSCOhost',
-    type: 'subscribed',
-    image: readLogo,
-    description:
-      'An online research database platform offering access to scholarly journals, e-books, magazines, newspapers, and other educational resources.',
-  },
-
-  {
-    title: 'Emerald Publishing',
-    type: 'subscribed',
-    image: readLogo,
-    description:
-      'Publishes academic books, journals, and research resources focusing on business, management, education, and social sciences.',
-  },
-
-  {
-    title: 'Gale Databases',
-    type: 'subscribed',
-    image: readLogo,
-    description:
-      'Offers digital research databases, e-books, and reference materials covering literature, history, science, and other academic subjects.',
-  },
-
-  {
-    title: 'IG Publishing',
-    type: 'subscribed',
-    image: readLogo,
-    description:
-      'An international digital publisher providing scholarly e-books, journals, teaching materials, and conference proceedings in various disciplines.',
-  },
-
-  {
-    title: 'IGI Global',
-    type: 'subscribed',
-    image: readLogo,
-    description:
-      'Publishes research-based books, journals, and case studies focusing on information technology, business, education, and emerging technologies.',
-  },
-
-  {
-    title: 'MyLegalWhiz',
-    type: 'subscribed',
-    image: readLogo,
-    description:
-      'A legal research and knowledge assistance platform providing AI-supported legal content, research guidance, and legal information services.',
-  },
-
-  {
-    title: 'Oxford University Press',
-    type: 'subscribed',
-    image: readLogo,
-    description:
-      'Provides scholarly books, journals, and digital resources covering humanities, social sciences, medicine, and sciences.',
-  },
-
-  {
-    title: 'PressReader',
-    type: 'subscribed',
-    image: readLogo,
-    description:
-      'An online platform offering access to digital newspapers and magazines from around the world for news and current events.',
-  },
-
-  {
-    title: 'ProQuest Central',
-    type: 'subscribed',
-    image: readLogo,
-    description:
-      'A multidisciplinary research database providing access to scholarly journals, magazines, reports, newspapers, and academic resources.',
-  },
-
-  {
-    title: 'ProQuest Dissertations & Theses Global',
-    type: 'subscribed',
-    image: readLogo,
-    description:
-      'A comprehensive database of dissertations and theses from universities and research institutions worldwide.',
-  },
-
-  {
-    title: 'ProQuest Ebook Central',
-    type: 'subscribed',
-    image: readLogo,
-    description:
-      'An online e-book database providing access to thousands of academic and scholarly e-books across multiple disciplines.',
-  },
-
-  {
-    title: 'Wiley Online Library',
-    type: 'subscribed',
-    image: readLogo,
-    description:
-      'Provides access to scholarly journals, books, and reference materials in science, technology, medicine, business, and social sciences.',
-  },
-
-  {
-    title: 'JSTOR',
-    type: 'subscribed',
-    image: readLogo,
-    description:
-      'A digital library offering academic journals, books, and primary sources covering humanities, social sciences, and sciences.',
-  },
-
-  {
-    title: 'Philippine E-Journals (PeJ)',
-    type: 'subscribed',
-    image: readLogo,
-    description:
-      'A Philippine-based database providing scholarly journals and research publications from academic institutions and organizations across various disciplines.',
-  },
+{
+  title: 'Britannica Library',
+  type: 'subscribed',
+  image: BritannicaLibrary,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'Britannica Library is a comprehensive online resource offering curated collections of authoritative articles, multimedia content, and primary sources across diverse subjects.',
+},
+{
+  title: 'De Gruyter',
+  type: 'subscribed',
+  image: DeGruyter,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'De Gruyter provides academic publishing books, journals, and online resources covering humanities, social sciences, and natural sciences.',
+},
+{
+  title: 'EBSCOHost',
+  type: 'subscribed',
+  image: EBSCOHost,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'EBSCOHost provides access to research databases, eBooks, journals, newspapers, and multimedia resources for students and researchers.',
+},
+{
+  title: 'Emerald Publishing',
+  type: 'subscribed',
+  image: EmeraldPublishing,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'Emerald Publishing offers books, journals, and online research resources focusing on business, management, education, and social sciences.',
+},
+{
+  title: 'Gale Databases',
+  type: 'subscribed',
+  image: GaleDatabases,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'Gale Databases provide access to eBooks, journals, literature resources, encyclopedias, and scholarly academic content across multiple disciplines.',
+},
+{
+  title: 'IG Publishing',
+  type: 'subscribed',
+  image: IGPublishing,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'IG Publishing is an innovative international distributor of digital academic content specializing in information science, technology, management, and conference proceedings.',
+},
+{
+  title: 'IGI Global',
+  type: 'subscribed',
+  image: IGIGlobal,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'IGI Global focuses on research publications in IT and management, offering access to journals, books, and case studies on emerging technologies.',
+},
+{
+  title: 'MyLegalWhiz',
+  type: 'subscribed',
+  image: MyLegalWhiz,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'MyLegalWhiz is a legal knowledge and research assistance platform focusing on legal content and AI-powered legal research guidance.',
+},
+{
+  title: 'Oxford University Press',
+  type: 'subscribed',
+  image: OxfordUniversityPress,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'Oxford University Press provides scholarly resources for humanities, social sciences, and sciences.',
+},
+{
+  title: 'PressReader',
+  type: 'subscribed',
+  image: PressReader,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'PressReader is an online database of newspapers and magazines from around the world, providing access to current news and publications.',
+},
+{
+  title: 'ProQuest Central',
+  type: 'subscribed',
+  image: ProQuestCentral,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'ProQuest Central is a multidisciplinary database providing access to scholarly journals, magazines, newspapers, and research resources.',
+},
+{
+  title: 'ProQuest Dissertations & Theses Global',
+  type: 'subscribed',
+  image: ProQuestDissertationsAndThesesGlobal,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'ProQuest Dissertations & Theses Global is a comprehensive database of dissertations and theses from universities around the world.',
+},
+{
+  title: 'ProQuest Ebook Central',
+  type: 'subscribed',
+  image: ProQuestEbookCentral,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'ProQuest Ebook Central is an online database of academic eBooks covering various disciplines widely used by libraries and researchers.',
+},
+{
+  title: 'Wiley',
+  type: 'subscribed',
+  image: Wiley,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'Wiley offers journals, books, and reference works in science, technology, medicine, and social sciences.',
+},
+{
+  title: 'JSTOR',
+  type: 'subscribed',
+  image: JSTOR,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'JSTOR provides access to scholarly journals, books, and primary sources through an extensive digital academic platform.',
+},
+{
+  title: 'Philippine E-Journals (PeJ)',
+  type: 'subscribed',
+  image: PhilippineEJournals,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'A Philippine-based database providing scholarly journals and research publications from academic institutions and organizations across various disciplines.',
+},
 
   /* FREE WEB-BASED DATABASES */
-  {
-    title: 'Open Library',
-    type: 'free',
-    image: readLogo,
-    description:
-      'A free web-based digital library offering access to millions of books and learning materials.',
-  },
+{
+  title: 'Teknoaklatan',
+  type: 'free',
+  image: Teknoaklatan,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'A database produced by the National Library of the Philippines containing digitized serials, historical records, government publications, and rare Philippine collections.',
+},
+{
+  title: 'KWF Diksyonaryong Filipino',
+  type: 'free',
+  image: KWFDiksyonaryongFilipino,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'Ang KWF Diksyonaryong Wikang Filipino ay hango sa database ng Diksiyonaryo ng Wikang Filipino na unang nailathala noong 1989.',
+},
+{
+  title: 'Acta Medica Philippina',
+  type: 'free',
+  image: ActaMedicaPhilippina,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'An open-access, peer-reviewed medical and health science journal published by the University of the Philippines Manila.',
+},
+{
+  title: 'UN Digital Library',
+  type: 'free',
+  image: UNDigitalLibrary,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'A repository of official publications and documents produced by the United Nations covering various subjects.',
+},
+{
+  title: 'UNESCO Digital Library',
+  type: 'free',
+  image: UNESCODigitalLibrary,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'UNESCO’s institutional repository providing access to high-quality information, publications, and historical records.',
+},
+{
+  title: 'STARBOOKS',
+  type: 'free',
+  image: STARBOOKS,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'A portable digital library developed by DOST providing science and technology resources accessible even in low-internet areas.',
+},
+{
+  title: 'PIDS',
+  type: 'free',
+  image: PIDS,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'Philippine Institute for Development Studies is a research database focusing on the Philippines’ economic and social development.',
+},
+{
+  title: 'SERP-P',
+  type: 'free',
+  image: SERPP,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'Studies in Educational Research Program – Philippines is an online repository of socioeconomic and educational research resources.',
+},
+{
+  title: 'International Children’s Digital Library',
+  type: 'free',
+  image: InternationalChildrensDigitalLibrary,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'A global collection of children’s literature available in multiple languages to promote literacy and cultural understanding.',
+},
+{
+  title: 'Let’s Read Asia',
+  type: 'free',
+  image: LetsReadAsia,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'An online library of Asian children’s books promoting literacy and cultural exchange among young readers.',
+},
+{
+  title: 'Bloom Library',
+  type: 'free',
+  image: BloomLibrary,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'A global digital library containing books in hundreds of languages available for reading, listening, and downloading.',
+},
+{
+  title: 'ERIC',
+  type: 'free',
+  image: ERIC,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'Education Resources Information Center is an extensive database for educational research and academic resources.',
+},
+{
+  title: 'Project Gutenberg',
+  type: 'free',
+  image: ProjectGutenberg,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'A volunteer-driven digital library offering free eBooks and digitized cultural works from around the world.',
+},
+{
+  title: 'Google News Archive',
+  type: 'free',
+  image: GoogleNewsArchive,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'A Google News extension providing access to scanned newspaper archives and historical news collections.',
+},
+{
+  title: 'Internet Archive',
+  type: 'free',
+  image: InternetArchive,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'A non-profit digital library offering free access to books, websites, multimedia, and historical digital collections.',
+},
+{
+  title: 'Philippine Journal of Science',
+  type: 'free',
+  image: PhilippineJournalOfScience,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'An open-access peer-reviewed journal covering science, engineering, mathematics, and social sciences in the Philippines.',
+},
+{
+  title: 'Cambridge Open Access',
+  type: 'free',
+  image: CambridgeOpenAccess,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'Cambridge University’s repository of open-access research articles, conference papers, datasets, and theses.',
+},
+{
+  title: 'Accessible Books Consortium',
+  type: 'free',
+  image: AccessibleBooksConsortium,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'A global initiative increasing the availability of accessible books for people with print disabilities.',
+},
+{
+  title: 'FamilySearch',
+  type: 'free',
+  image: FamilySearch,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'A free genealogy platform providing historical records, family trees, and ancestry research resources.',
+},
+{
+  title: 'HathiTrust',
+  type: 'free',
+  image: HathiTrust,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'A digital partnership of academic institutions offering millions of digitized books and research publications.',
+},
+{
+  title: 'DOAJ',
+  type: 'free',
+  image: DOAJ,
+  link: 'https://eportal.nlp.gov.ph/eresources',
+  description:
+    'The Directory of Open Access Journals indexes high-quality peer-reviewed open-access journals worldwide.',
+}
 
-  {
-    title: 'Project Gutenberg',
-    type: 'free',
-    image: readLogo,
-    description: 'A free collection of public domain eBooks available for reading and downloading.',
-  },
 ]
 
 const filteredResources = computed(() => {
@@ -159,6 +353,7 @@ const filteredResources = computed(() => {
 <template>
   <div class="resources-page-header text-center">
     <h1>Library Resources</h1>
+        <div class="services-line"></div>
     <p>
       Access selected digital resources, subscribed databases, and free web-based learning materials
       for reading, research, and lifelong learning.
@@ -196,7 +391,9 @@ const filteredResources = computed(() => {
             <div>
               <h4>{{ resource.title }}</h4>
               <p>{{ resource.description }}</p>
-              <a href="#">OPEN</a>
+              <a :href="resource.link" target="_blank" rel="noopener noreferrer">
+                OPEN
+              </a>
             </div>
           </div>
         </div>
@@ -219,6 +416,14 @@ const filteredResources = computed(() => {
   align-items: center;
   gap: 22px;
   flex-wrap: wrap;
+}
+
+.services-line {
+  width: 70px;
+  height: 4px;
+  background: var(--secondary);
+  border-radius: 50px;
+  margin: 0 auto 22px;
 }
 
 .resource-filter-buttons {
@@ -245,18 +450,6 @@ const filteredResources = computed(() => {
   font-size: clamp(34px, 4vw, 52px);
   font-weight: 900;
   margin-bottom: 10px;
-}
-
-.resources-page-header h1::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-  width: 90px;
-  height: 5px;
-  background: var(--secondary);
-  border-radius: 20px;
 }
 
 .resource-subtitle {
@@ -303,7 +496,7 @@ const filteredResources = computed(() => {
 }
 
 .eresource-card {
-  background: #d9d9d9;
+  background: #ededed;
   border-radius: 18px;
   padding: 22px;
   display: flex;
@@ -317,7 +510,7 @@ const filteredResources = computed(() => {
   object-fit: contain;
   border-radius: 10px;
   background: var(--tertiary);
-  padding: 10px;
+  padding: 3px;
 }
 
 .eresource-card h4 {

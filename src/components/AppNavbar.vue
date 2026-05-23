@@ -1,5 +1,110 @@
 <script setup>
-import { RouterLink } from 'vue-router'
+import { ref, computed } from 'vue'
+import { RouterLink, useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const navSearch = ref('')
+const showSuggestions = ref(false)
+
+const searchData = [
+  {
+    title: 'Brief History',
+    path: '/about?section=history',
+    category: 'About Us',
+    keywords: 'history library tondo congressional district'
+  },
+
+  {
+    title: 'VMGO',
+    path: '/about?section=vmgo',
+    category: 'About Us',
+    keywords: 'vision mission goals objectives brief history'
+  },
+
+  {
+    title: 'Facilities',
+    path: '/about?section=facilities',
+    category: 'About Us',
+    keywords: 'discussion exhibit nook review room reading area facilities study children baggage counter filipiniana krn fiction circulation registration tech4ed compact shelves'
+  },
+
+  {
+    title: 'Library Services',
+    path: '/services',
+    category: 'Services',
+    keywords: 'book reservation research assistance discussion onluine document delivery E-government services research free tutorial storytelling filmshowing lamination services  '
+  },
+
+  {
+    title: 'OPAC',
+    path: '/resources?section=opac',
+    category: 'Resources',
+    keywords: 'filipiniana reference circulation fiction books catalog call number'
+  },
+
+  {
+    title: 'E-Resources',
+    path: '/resources?section=eresources',
+    category: 'Resources',
+    keywords: 'jstor ebsco britannica databases'
+  },
+
+  {
+    title: 'Library Activities and Programs',
+    path: '/events',
+    category: 'Events',
+    keywords: 'events outreach programs donation drive'
+  },
+
+  {
+    title: 'Contact Information',
+    path: '/contact',
+    category: 'Contact',
+    keywords: 'email phone address location'
+  }
+]
+
+const filteredSuggestions = computed(() => {
+
+  const keyword = navSearch.value
+    .toLowerCase()
+    .trim()
+
+  if (!keyword) return []
+
+  return searchData.filter(item => {
+
+    const searchable = `
+      ${item.title}
+      ${item.category}
+      ${item.keywords}
+    `.toLowerCase()
+
+    return searchable.includes(keyword)
+
+  })
+
+})
+
+function handleSearch() {
+
+  if (filteredSuggestions.value.length > 0) {
+
+    router.push(filteredSuggestions.value[0].path)
+
+    navSearch.value = ''
+    showSuggestions.value = false
+  }
+}
+
+function selectSuggestion(path) {
+
+  router.push(path)
+
+  navSearch.value = ''
+  showSuggestions.value = false
+}
 </script>
 
 <template>
@@ -111,16 +216,21 @@ import { RouterLink } from 'vue-router'
         </ul>
 
         <!-- SEARCH -->
-        <div class="d-flex align-items-center ms-auto gap-3">
+        <div class="search-wrapper">
           <form
             class="nav-search-form d-flex"
             role="search"
+            @submit.prevent="handleSearch"
           >
             <input
+              v-model="navSearch"
               class="form-control nav-search-input"
               type="search"
-              placeholder="Search..."
+              placeholder="Search website..."
               aria-label="Search"
+
+              @focus="showSuggestions = true"
+              @blur="setTimeout(() => showSuggestions = false, 200)"
             >
             <button
               class="nav-search-btn"
@@ -129,6 +239,24 @@ import { RouterLink } from 'vue-router'
               <i class="bi bi-search"></i>
             </button>
           </form>
+
+          <!-- LIVE DROPDOWN -->
+          <div
+            v-if="showSuggestions && filteredSuggestions.length"
+            class="search-suggestions"
+          >
+            <div
+              v-for="(item, index) in filteredSuggestions"
+              :key="index"
+              class="search-suggestion-item"
+              @click="selectSuggestion(item.path)"
+            >
+              <span>{{ item.category }}</span>
+              <strong>
+                {{ item.title }}
+              </strong>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -246,6 +374,70 @@ import { RouterLink } from 'vue-router'
 .navbar-collapse {
   position: relative;
   z-index: 3;
+}
+
+/* SEARCH WRAPPER */
+.search-wrapper {
+  position: relative;
+}
+
+/* LIVE SEARCH DROPDOWN */
+.search-suggestions {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+  z-index: 99999;
+  animation: searchDrop 0.2s ease;
+}
+
+/* ITEM */
+.search-suggestion-item {
+  padding: 14px 18px;
+  border-bottom: 1px solid #f1f1f1;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.search-suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.search-suggestion-item:hover {
+  background: #f8f9ff;
+}
+
+/* CATEGORY */
+.search-suggestion-item span {
+  display: block;
+  color: var(--secondary);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+/* TITLE */
+.search-suggestion-item strong {
+  color: var(--primary);
+  font-size: 14px;
+}
+
+/* ANIMATION */
+@keyframes searchDrop {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 991px) {

@@ -33,6 +33,7 @@ const filteredBooks = computed(() => {
 <template>
   <div class="resources-page-header text-center">
     <h1>Library Resources</h1>
+    <div class="services-line"></div>
     <p>Search library records by call number, title, author, location, or copyright year.</p>
   </div>
   <section class="opac-section">
@@ -113,6 +114,14 @@ const filteredBooks = computed(() => {
   border-radius: 20px;
 }
 
+.services-line {
+  width: 70px;
+  height: 4px;
+  background: var(--secondary);
+  border-radius: 50px;
+  margin: 0 auto 22px;
+}
+
 .resources-page-header p {
   max-width: 580px;
   margin: 12px auto 45px;
@@ -184,9 +193,7 @@ const filteredBooks = computed(() => {
   max-height: 520px;
   overflow-y: auto;
   overflow-x: auto;
-
   padding: 24px;
-
   scrollbar-width: thin;
   scrollbar-color: var(--secondary) #f1f1f1;
 }
