@@ -11,10 +11,56 @@ import e7 from '@/assets/images/e7.png'
 import e8 from '@/assets/images/e8.png'
 import e9 from '@/assets/images/e9.png'
 import e10 from '@/assets/images/e10.png'
+import e11 from '@/assets/images/e11.png'
 
 const resourceTrack = ref(null)
 
-const resources = [e1, e2, e3, e4, e5, e6, e7, e8, e9, e10]
+const resources = [
+  {
+    image: e1,
+    link: 'https://www.letsreadasia.org/',
+  },
+  {
+    image: e2,
+    link: 'https://www.uniteforliteracy.com/',
+  },
+  {
+    image: e3,
+    link: 'https://www.africanstorybook.org/',
+  },
+  {
+    image: e4,
+    link: 'https://bookdash.org/books/',
+  },
+  {
+    image: e5,
+    link: 'https://www.thefablecottage.com/',
+  },
+  {
+    image: e6,
+    link: 'https://storylineonline.net/',
+  },
+    {
+    image: e7,
+    link: 'http://www.childrenslibrary.org/',
+  },
+  {
+    image: e8,
+    link: 'http://www.kids-bookreview.com/',
+  },
+  {
+    image: e9,
+    link: 'https://www.loyalbooks.com/',
+  },
+  {
+    image: e10,
+    link: 'https://archive.org/details/books',
+  },
+  {
+    image: e11,
+    link: 'https://www.openculture.com/freeaudiobooks',
+  },
+]
 
 function scrollResources(direction) {
   const container = resourceTrack.value
@@ -37,46 +83,56 @@ function scrollResources(direction) {
 <template>
   <section id="resources" class="resources-section">
     <div class="container">
-      <!-- HEADER -->
+
       <div class="resources-header-wrap">
-        <!-- LEFT CONTENT -->
         <div>
           <div class="section-title-top">E-Resources</div>
+
           <h2 class="section-title text-uppercase">
             OPEN EDUCATIONAL RESOURCES
           </h2>
+
           <p class="resources-subtext">
             Access a curated digital environment of open-license materials,
             textbooks, and peer-reviewed research.
           </p>
         </div>
-        <!-- RIGHT SIDE -->
+
         <div class="resources-right-controls">
-          <!-- VIEW ALL -->
-          <a href="#" class="collections-link">
+          <a
+            href="https://eportal.nlp.gov.ph/eresources"
+            target="_blank"
+            class="collections-link"
+          >
             View all Collections
             <i class="bi bi-arrow-right"></i>
           </a>
         </div>
       </div>
-      
-      <!-- CARDS -->
+
       <div class="resource-carousel-wrap">
         <button
           class="resource-side-arrow resource-side-arrow-left"
-          @click="scrollResources(-1)">
+          @click="scrollResources(-1)"
+        >
           <i class="bi bi-arrow-left"></i>
         </button>
 
         <div class="resource-track" ref="resourceTrack">
-          <div
+          <a
             v-for="(resource, index) in resources"
             :key="index"
-            class="resource-card">
-            <img :src="resource" class="resource-logo" alt="E-Resources" />
-          </div>
+            :href="resource.link"
+            target="_blank"
+            class="resource-card"
+          >
+            <img
+              :src="resource.image"
+              class="resource-logo"
+              alt="E-Resources"
+            />
+          </a>
         </div>
-
         <button
           class="resource-side-arrow resource-side-arrow-right"
           @click="scrollResources(1)"
@@ -87,7 +143,6 @@ function scrollResources(direction) {
     </div>
   </section>
 </template>
-
 <style scoped>
 .resources-section {
   background: #f4f6f8;
