@@ -1,17 +1,25 @@
 <script setup>
 import { ref } from 'vue'
 import heroImage from '@/assets/images/hero1.png'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const searchQuery = ref('')
 
 function handleHeroSearch() {
+  const keyword = searchQuery.value.trim()
 
-  if (!searchQuery.value.trim()) {
-    alert('Please enter a search keyword.')
-    return
-  }
+  if (!keyword) return
 
-  alert(`Searching for: ${searchQuery.value}`)
+  router.push({
+    path: '/resources',
+    query: {
+      section: 'opac',
+      search: keyword
+    }
+  })
+
+  searchQuery.value = ''
 }
 </script>
 
@@ -54,7 +62,7 @@ function handleHeroSearch() {
               v-model="searchQuery"
               type="text"
               class="form-control"
-              placeholder="Search books, resources, programs, or services..."
+              placeholder="Search author, title, keywords, call number..."
               aria-label="Search library content"
             />
             <button

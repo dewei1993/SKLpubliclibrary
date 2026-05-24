@@ -284,12 +284,16 @@ function selectSuggestion(path) {
   padding: 0;
 }
 
+.navbar-nav {
+  gap: 14px;
+}
+
 .navbar-custom .nav-link {
   font-weight: 700;
   color: #333;
   text-transform: uppercase;
   font-size: 14px;
-  padding: 16px 14px;
+  padding: 16px 8px;
 }
 
 /* ABOUT DROPDOWN FIX */

@@ -22,7 +22,10 @@ import eresourcesLogo from '@/assets/images/ERESOURCESlogo.png'
         <div class="col-lg-5">
           <div class="icon-badges d-flex justify-content-center gap-4 flex-wrap">
             <!-- OPAC -->
-            <a href="#" class="badge-item text-center text-decoration-none">
+            <RouterLink
+                  to="/resources?section=opac"
+                  class="badge-item text-center text-decoration-none"
+                >
               <div class="icon-badge">
                 <img
                   :src="opacLogo"
@@ -33,7 +36,7 @@ import eresourcesLogo from '@/assets/images/ERESOURCESlogo.png'
               <h6 class="badge-label">
                 OPAC
               </h6>
-            </a>
+            </RouterLink>
             <!-- CHARTER -->
             <a href="#" class="badge-item text-center text-decoration-none">
               <div class="icon-badge">
@@ -47,7 +50,10 @@ import eresourcesLogo from '@/assets/images/ERESOURCESlogo.png'
               </h6>
             </a>
             <!-- E-RESOURCES -->
-            <a href="#" class="badge-item text-center text-decoration-none">
+            <RouterLink
+                  to="/resources?section=eresources"
+                  class="badge-item text-center text-decoration-none"
+                >
               <div class="icon-badge">
                 <img
                   :src="eresourcesLogo"
@@ -58,7 +64,7 @@ import eresourcesLogo from '@/assets/images/ERESOURCESlogo.png'
               <h6 class="badge-label">
                 E-Resources
               </h6>
-            </a>
+            </RouterLink>
           </div>
         </div>
       </div>

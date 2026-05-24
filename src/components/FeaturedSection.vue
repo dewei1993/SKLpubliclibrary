@@ -10,11 +10,9 @@ import col4 from '@/assets/images/col4.png'
     <div class="container">
       <!-- HEADER -->
       <div
-        class="collections-header d-flex justify-content-between align-items-start flex-wrap gap-3"
-      >
+        class="collections-header d-flex justify-content-between align-items-start flex-wrap gap-3">
         <div>
           <div class="section-title-top">Collections</div>
-
           <h2 class="section-title text-uppercase">Featured Collections</h2>
         </div>
         <a href="#" class="collections-link">
@@ -30,7 +28,6 @@ import col4 from '@/assets/images/col4.png'
           <div class="collection-overlay">
             <h3>New Additional Collections</h3>
             <p>Law, Engineering, and Management Books</p>
-            <a href="#" class="collection-btn"> Check Out </a>
           </div>
         </div>
         <!-- TOP RIGHT -->
@@ -52,7 +49,7 @@ import col4 from '@/assets/images/col4.png'
         <div class="collection-card">
           <img :src="col4" alt="Law and Careers" />
           <div class="collection-overlay">
-            <h3>Law & Careers</h3>
+            <h3>Review Books</h3>
           </div>
         </div>
       </div>
@@ -60,127 +57,115 @@ import col4 from '@/assets/images/col4.png'
   </section>
 </template>
 
-<style>
+<style scoped>
 .featured-collections-section {
   background: #fff;
   padding: 80px 0;
 }
 
-.collections-kicker {
-  color: var(--secondary);
-  text-transform: uppercase;
-  letter-spacing: 1.8px;
-  font-size: 12px;
-  font-weight: 800;
-  margin-bottom: 10px;
+.collections-header {
+  margin-bottom: 34px;
 }
 
 .collections-link {
   color: var(--primary);
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 800;
   margin-top: 10px;
   white-space: nowrap;
+  transition: 0.3s ease;
 }
 
 .collections-link:hover {
   color: var(--secondary);
 }
 
+/* FIXED GRID */
 .collections-grid {
-  margin-top: 34px;
   display: grid;
   grid-template-columns: 1.15fr 0.85fr 0.85fr;
-  grid-template-rows: 160px 190px;
+  grid-template-rows: 190px 190px;
   gap: 16px;
+  align-items: stretch;
 }
 
+/* CARD */
 .collection-card {
   position: relative;
   overflow: hidden;
-  border-radius: 6px;
-  min-height: 190px;
+  border-radius: 10px;
   background: #d9d9d9;
+  min-height: 0;
+  height: 100%;
 }
 
+/* LARGE LEFT CARD */
+.collection-card-lg {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+}
+
+/* TOP RIGHT WIDE CARD */
+.collection-card-wide {
+  grid-column: 2 / 4;
+  grid-row: 1 / 2;
+}
+
+/* IMAGE FIX */
 .collection-card img {
   width: 100%;
   height: 100%;
+  min-height: 0;
   object-fit: cover;
   display: block;
-  transition: transform 0.4s ease;
+  transition: 0.45s ease;
 }
 
+.collection-card:hover img {
+  transform: scale(1.06);
+}
+
+/* OVERLAY */
 .collection-card::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(0, 43, 73, 0.88) 0%,
-    rgba(0, 43, 73, 0.45) 35%,
-    rgba(0, 43, 73, 0.08) 100%
+    rgba(26, 75, 109, 0.9) 0%,
+    rgba(26, 75, 109, 0.55) 45%,
+    rgba(0, 0, 0, 0.05) 100%
   );
+  z-index: 1;
 }
 
-.collection-card:hover img {
-  transform: scale(1.05);
-}
-
-.collection-card-lg {
-  grid-row: 1 / span 2;
-  grid-column: 1 / 2;
-  min-height: 366px;
-}
-
-.collection-card-wide {
-  grid-column: 2 / span 2;
-  min-height: 160px;
-}
-
+/* TEXT */
 .collection-overlay {
   position: absolute;
-  left: 18px;
-  right: 18px;
-  bottom: 18px;
+  left: 22px;
+  right: 22px;
+  bottom: 22px;
   z-index: 2;
   color: #fff;
 }
 
 .collection-overlay h3 {
-  font-size: clamp(20px, 2vw, 30px);
-  font-weight: 800;
+  font-size: clamp(20px, 2vw, 32px);
+  font-weight: 900;
+  line-height: 1.1;
   margin-bottom: 8px;
 }
 
 .collection-overlay p {
   font-size: 14px;
-  line-height: 1.5;
-  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
   margin: 0;
   max-width: 90%;
 }
 
-.collection-btn {
-  display: inline-block;
-  margin-top: 14px;
-  padding: 10px 16px;
-  background: rgba(255, 255, 255, 0.14);
-  color: #fff;
-  text-decoration: none;
-  border-radius: 4px;
-  font-weight: 700;
-  font-size: 14px;
-  backdrop-filter: blur(4px);
-  transition: 0.3s ease;
-}
-
-.collection-btn:hover {
-  background: var(--primary);
-  color: #fff;
-}
-
-@media (max-width: 991.98px) {
+/* TABLET */
+@media (max-width: 991px) {
   .collections-grid {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
@@ -191,11 +176,16 @@ import col4 from '@/assets/images/col4.png'
   .collection-card {
     grid-column: auto;
     grid-row: auto;
-    min-height: 240px;
+    height: 260px;
   }
 }
 
-@media (max-width: 767.98px) {
+/* MOBILE */
+@media (max-width: 767px) {
+  .collections-header {
+    flex-direction: column;
+  }
+
   .collections-grid {
     grid-template-columns: 1fr;
   }
@@ -203,11 +193,7 @@ import col4 from '@/assets/images/col4.png'
   .collection-card-lg,
   .collection-card-wide,
   .collection-card {
-    min-height: 240px;
-  }
-
-  .collections-header {
-    align-items: flex-start !important;
+    height: 260px;
   }
 }
 </style>

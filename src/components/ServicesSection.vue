@@ -4,6 +4,7 @@ import { ref } from 'vue'
 import event1 from '@/assets/images/event1.png'
 import event2 from '@/assets/images/event2.png'
 import event3 from '@/assets/images/event3.png'
+import event4 from '@/assets/images/event4.png'
 
 import service1 from '@/assets/images/services1.png'
 import service2 from '@/assets/images/services2.png'
@@ -16,29 +17,32 @@ import service8 from '@/assets/images/services8.png'
 
 const featuredActivity = ref({
   title: 'SM Care Book Donation Drive',
-  desc: 'As one of the recipients of the SM Cares Book Donation Drive Project, SKL received more than 40 boxes of general collection materials as a starting point to establish a Book Nook section in the library.',
+  date: 'JULY 24, 2024',
+  desc: 'SKL received more than 40 boxes of donated books and learning materials through the SM Cares Book Donation Drive Project to support literacy and community learning.',
   img: event1,
 })
 
 const activities = [
   {
-    date: 'JULY 24, 2024',
-    title: 'Summer Reading Challenge for Youth',
-    desc: 'Join our summer reading challenge designed to inspire young readers through engaging book activities and library participation.',
-    img: event1,
+    date: 'AUGUST 12, 2024',
+    title: 'Library Outreach Program',
+    desc: 'A literacy and community engagement initiative that extends library programs, reading activities, and educational services beyond the library.',
+    img: event4,
   },
+
   {
     date: 'JULY 28, 2024',
-    title: 'Author Spotlight: Elena Vance',
-    desc: 'A special author spotlight event featuring Elena Vance.',
+    title: 'Livelihood Program',
+    desc: 'A community-based livelihood activity that provided practical skills, learning opportunities, and empowerment programs for participants.',
     img: event2,
   },
+
   {
-    date: 'AUG 05, 2024',
-    title: 'Library Board Town Hall Meeting',
-    desc: 'Attend the library board town hall meeting to hear updates and ask questions.',
+    date: 'AUGUST 05, 2024',
+    title: 'Library Orientation Program',
+    desc: 'An orientation activity introducing library users to the facilities, services, collections, and digital resources of Sentro ng Karunungan Library.',
     img: event3,
-  },
+  }
 ]
 
 const serviceImages = [
@@ -97,7 +101,9 @@ function scrollServices(direction) {
 
               <p>{{ featuredActivity.desc }}</p>
 
-              <a href="#" class="readmore-btn">Read More</a>
+              <RouterLink to="/events" class="readmore-btn">
+                Read More
+              </RouterLink>
             </div>
           </div>
         </div>
@@ -118,7 +124,11 @@ function scrollServices(direction) {
                 {{ activity.title }}
               </h5>
 
-              <a href="#" @click.prevent>Details</a>
+              <RouterLink
+                to="/events"
+                class="event-details-link">
+                Read More
+              </RouterLink>
             </div>
           </div>
         </div>
@@ -129,38 +139,39 @@ function scrollServices(direction) {
   <!-- LIBRARY SERVICES SECTION -->
   <section id="library-services" class="library-services-section">
     <div class="container">
-      <div class="services-header">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+      <div>
         <div class="section-title-top">SERVICES</div>
-
         <h2 class="section-title text-uppercase">Library Services</h2>
-
         <p class="services-subtitle">
           Providing the tools and environments necessary for academic success and lifelong learning.
         </p>
       </div>
 
       <!-- ARROWS TOP RIGHT -->
-      <div class="services-top-controls">
-        <div></div>
-
-        <div class="services-arrow-group">
-          <button
-            class="services-arrow"
-            type="button"
-            aria-label="Previous services"
-            @click="scrollServices(-1)"
-          >
-            <i class="bi bi-arrow-left"></i>
-          </button>
-
-          <button
-            class="services-arrow"
-            type="button"
-            aria-label="Next services"
-            @click="scrollServices(1)"
-          >
+        <div class="services-top-controls">
+          <!-- TOP LINK -->
+          <a href="#" class="collections-link">
+            View all Services
             <i class="bi bi-arrow-right"></i>
-          </button>
+          </a>
+          <!-- ARROWS -->
+          <div class="services-arrow-group">
+            <button
+              class="services-arrow"
+              type="button"
+              aria-label="Previous services"
+              @click="scrollServices(-1)">
+              <i class="bi bi-arrow-left"></i>
+            </button>
+            <button
+              class="services-arrow"
+              type="button"
+              aria-label="Next services"
+              @click="scrollServices(1)">
+              <i class="bi bi-arrow-right"></i>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -177,10 +188,6 @@ function scrollServices(direction) {
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="service-poster-content text-center">
-        <RouterLink to="/services" class="service-poster-btn"> BOOK NOW </RouterLink>
       </div>
     </div>
   </section>
@@ -306,6 +313,18 @@ function scrollServices(direction) {
   color: #fff;
 }
 
+.event-details-link {
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: underline;
+  font-size: 15px;
+  transition: 0.3s ease;
+}
+
+.event-details-link:hover {
+  color: var(--secondary);
+}
+
 /* =========================================
    SERVICES SECTION
 ========================================= */
@@ -339,14 +358,31 @@ function scrollServices(direction) {
 
 .services-top-controls {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  margin-top: 10px;
+  flex-shrink: 0;
 }
 
+/* ARROW GROUP */
 .services-arrow-group {
   display: flex;
-  gap: 12px;
+  gap: 10px;
+}
+
+/* VIEW ALL */
+.collections-link {
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: 0.3s ease;
+  margin-bottom: 20%;
+}
+
+.collections-link:hover {
+  color: var(--secondary);
 }
 
 /* =========================================
@@ -425,45 +461,26 @@ function scrollServices(direction) {
   margin-top: 28px;
 }
 
-.service-poster-btn {
-  background: var(--primary);
-  color: #fff;
-  font-weight: 700;
-  font-size: 18px;
-  padding: 10px 26px;
-  border-radius: 8px;
-  text-decoration: none;
-  display: inline-block;
-  transition: 0.3s ease;
-}
-
-.service-poster-btn:hover {
-  background: var(--secondary);
-  color: #fff;
-  transform: translateY(-2px);
-}
 
 /* =========================================
    ARROWS
 ========================================= */
 
 .services-arrow {
-  width: 52px;
-  height: 52px;
+  width: 42px;
+  height: 42px;
   border: none;
-  border-radius: 50%;
-  background: var(--primary);
-  color: #fff;
+  background: #e0e0e0;
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
   transition: 0.3s ease;
 }
 
 .services-arrow:hover {
-  background: var(--secondary);
-  transform: translateY(-2px);
+  background: var(--primary);
+  color: #fff;
 }
 
 /* =========================================

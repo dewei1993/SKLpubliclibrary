@@ -38,27 +38,41 @@ function scrollResources(direction) {
   <section id="resources" class="resources-section">
     <div class="container">
       <!-- HEADER -->
-      <div class="d-flex justify-content-between align-items-center mb-4">
+      <div class="resources-header-wrap">
+        <!-- LEFT CONTENT -->
         <div>
           <div class="section-title-top">E-Resources</div>
-          <h2 class="section-title text-uppercase">OPEN EDUCATIONAL RESOURCES</h2>
+          <h2 class="section-title text-uppercase">
+            OPEN EDUCATIONAL RESOURCES
+          </h2>
           <p class="resources-subtext">
-            Access a curated digital environment of open-license materials, textbooks, and
-            peer-reviewed research.
+            Access a curated digital environment of open-license materials,
+            textbooks, and peer-reviewed research.
           </p>
         </div>
-        <!-- ARROWS -->
-        <div class="resource-controls">
-          <button class="btn-nav" @click="scrollResources(-1)">
-            <i class="bi bi-arrow-left"></i>
-          </button>
-
-          <button class="btn-nav" @click="scrollResources(1)">
+        <!-- RIGHT SIDE -->
+        <div class="resources-right-controls">
+          <!-- VIEW ALL -->
+          <a href="#" class="collections-link">
+            View all Collections
             <i class="bi bi-arrow-right"></i>
-          </button>
+          </a>
+          <!-- ARROWS -->
+          <div class="resource-controls">
+            <button
+              class="btn-nav"
+              @click="scrollResources(-1)">
+              <i class="bi bi-arrow-left"></i>
+            </button>
+            <button
+              class="btn-nav"
+              @click="scrollResources(1)">
+              <i class="bi bi-arrow-right"></i>
+            </button>
+          </div>
         </div>
       </div>
-
+      
       <!-- CARDS -->
       <div class="resource-track" ref="resourceTrack">
         <div v-for="(resource, index) in resources" :key="index" class="resource-card">
@@ -69,7 +83,7 @@ function scrollResources(direction) {
   </section>
 </template>
 
-<style>
+<style scoped>
 .resources-section {
   background: #f4f6f8;
   padding: 70px 0;
@@ -168,5 +182,48 @@ function scrollResources(direction) {
 .resource-card:hover i,
 .resource-card:hover p {
   color: #fff;
+}
+
+.resources-header-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+/* RIGHT SIDE */
+.resources-right-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+/* VIEW ALL */
+.collections-link {
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: 0.3s ease;
+  margin-bottom: 20%;
+}
+
+.collections-link:hover {
+  color: var(--secondary);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+  .resources-header-wrap {
+    flex-direction: column;
+  }
+
+  .resources-right-controls {
+    width: 100%;
+    align-items: flex-start;
+  }
 }
 </style>

@@ -1,21 +1,26 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
+import { useRoute } from 'vue-router'
 import books from '@/data/books.json'
 
-const search = ref('')
+const route = useRoute()
+const search = ref(route.query.search || '')
+
+watch(
+  () => route.query.search,
+  (newSearch) => {
+    search.value = newSearch || ''
+  }
+)
 
 const filteredBooks = computed(() => {
   const keyword = search.value.toLowerCase().trim()
 
-  if (!keyword) {
-    return books
-  }
+  if (!keyword) return books
 
-  // SPLIT MULTIPLE KEYWORDS
   const keywords = keyword.split(' ')
 
   return books.filter((book) => {
-    // COMBINE ALL SEARCHABLE FIELDS
     const searchableText = `
       ${book.callNumber}
       ${book.title}
@@ -24,7 +29,6 @@ const filteredBooks = computed(() => {
       ${book.copyright}
     `.toLowerCase()
 
-    // EVERY KEYWORD MUST MATCH
     return keywords.every((word) => searchableText.includes(word))
   })
 })
