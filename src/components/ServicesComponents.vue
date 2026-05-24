@@ -167,7 +167,7 @@ const services = [
       'Book Reservation allows users to reserve available library materials for pickup at Sentro ng Karunungan Library.',
     image: services1,
     qrCode: qr1,
-    googleForm: 'https://forms.gle/YOUR_FORM_LINK',
+    googleForm: 'https://forms.gle/8Pv7CjuEsenUxD949',
   },
   {
     id: 2,
@@ -179,7 +179,7 @@ const services = [
       'Discussion Room Reservation is available for users who need a quiet space for study, collaboration, and group learning.',
     image: services2,
     qrCode: qr2,
-    googleForm: 'https://forms.gle/YOUR_FORM_LINK',
+    googleForm: 'https://forms.gle/71qFqBog9nXNniSL9',
   },
   {
     id: 3,
@@ -191,7 +191,7 @@ const services = [
       'Online Document Delivery Service helps researchers access digital materials such as articles, chapters, and other academic resources.',
     image: services3,
     qrCode: qr3,
-    googleForm: 'https://forms.gle/YOUR_FORM_LINK',
+    googleForm: 'https://forms.gle/R4QgNyzmC4SEDH7CA',
   },
   {
     id: 4,
@@ -203,7 +203,7 @@ const services = [
       'Research Assistance provides support in locating relevant resources, citations, and information for academic and personal research.',
     image: services4,
     qrCode: qr4,
-    googleForm: 'https://forms.gle/YOUR_FORM_LINK',
+    googleForm: 'https://forms.gle/StEARAwpw2aG9Z8Y7',
   },
   {
     id: 5,
@@ -215,43 +215,43 @@ const services = [
       'E-Government Registration Assistance supports users who need help accessing and registering for selected online government services.',
     image: services5,
     qrCode: qr5,
-    googleForm: 'https://forms.gle/YOUR_FORM_LINK',
+    googleForm: 'https://forms.gle/Yn3FfcDmgiPuHzhs8',
   },
   {
     id: 6,
-    title: 'Free Lamination Service',
-    icon: 'bi bi-card-heading',
+    title: 'Storytelling / Film Showing / Arts & Crafts Reservation',
+    icon: 'bi bi-easel-fill',
     description:
-      'Avail free lamination service for selected IDs, cards, certificates, and important documents.',
+      'Reserve library spaces for storytelling sessions, film showings, arts and crafts activities, and other educational community programs.',
     modalText:
-      'Free Lamination Service helps preserve selected personal documents, IDs, cards, and certificates.',
+      'Storytelling / Film Showing / Arts & Crafts Reservation allows schools, organizations, and community groups to reserve designated library spaces for educational, cultural, and creative activities including storytelling programs, film viewing sessions, arts workshops, and interactive learning events.',
     image: services6,
     qrCode: qr6,
-    googleForm: 'https://forms.gle/YOUR_FORM_LINK',
+    googleForm: 'https://forms.gle/cALwGPdzp1MXjgLq9',
   },
   {
     id: 7,
+    title: 'Free Lamination Service',
+    icon: 'bi bi-card-heading',
+    description:
+      'Free lamination service for IDs, educational materials, school projects, and important learning documents.',
+    modalText:
+      'Free Lamination Services help library users preserve and protect important documents such as IDs, educational materials, certificates, visual aids, and school projects through quality lamination support provided by the library.',
+    image: services7,
+    qrCode: qr7,
+    googleForm: 'https://forms.gle/C2uWpfz3bw5x3skt6',
+  },
+  {
+    id: 8,
     title: 'Free Tutorial for Children',
     icon: 'bi bi-mortarboard-fill',
     description:
       'Free learning support for children in reading, writing, counting, arts, crafts, and computer basics.',
     modalText:
       'Free Tutorial for Children supports young learners through basic reading, writing, counting, creativity, and computer literacy activities.',
-    image: services7,
-    qrCode: qr7,
-    googleForm: 'https://forms.gle/YOUR_FORM_LINK',
-  },
-  {
-    id: 8,
-    title: 'Library Tour',
-    icon: 'bi bi-building-fill',
-    description:
-      'Explore the library spaces, collections, services, and learning areas through a guided tour.',
-    modalText:
-      'Library Tour introduces visitors to the library facilities, available collections, services, and community learning spaces.',
     image: services8,
     qrCode: qr8,
-    googleForm: 'https://forms.gle/YOUR_FORM_LINK',
+    googleForm: 'https://forms.gle/3QferQsqnUrSY48u6',
   },
 ]
 

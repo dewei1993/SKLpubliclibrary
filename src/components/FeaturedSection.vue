@@ -15,10 +15,13 @@ import col4 from '@/assets/images/col4.png'
           <div class="section-title-top">Collections</div>
           <h2 class="section-title text-uppercase">Featured Collections</h2>
         </div>
-        <a href="#" class="collections-link">
-          View all collections
-          <i class="bi bi-arrow-right"></i>
-        </a>
+          <RouterLink
+            to="/resources?section=opac"
+            class="collections-link"
+          >
+            View all Collections
+            <i class="bi bi-arrow-right"></i>
+          </RouterLink>
       </div>
       <!-- GRID -->
       <div class="collections-grid">

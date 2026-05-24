@@ -1,7 +1,96 @@
 <script setup>
+import { ref, onMounted } from 'vue'
 import sklLogo from '@/assets/images/SKLlogo.png'
 
+
 const currentYear = new Date().getFullYear()
+
+const visitors = ref({
+  today: 0,
+  yesterday: 0,
+  last7Days: 0,
+  last30Days: 0,
+  thisMonth: 0,
+  thisYear: 0,
+  total: 0,
+})
+
+onMounted(() => {
+
+  const today = new Date().toISOString().split('T')[0]
+
+  let stats = JSON.parse(localStorage.getItem('visitorStats'))
+
+  if (!stats) {
+    stats = {
+      dates: {},
+      total: 0,
+    }
+  }
+
+  // ADD TODAY VISIT
+  stats.dates[today] = (stats.dates[today] || 0) + 1
+  stats.total += 1
+
+  localStorage.setItem(
+    'visitorStats',
+    JSON.stringify(stats)
+  )
+
+  const dates = stats.dates
+
+  // TODAY
+  visitors.value.today = dates[today] || 0
+
+  // YESTERDAY
+  const yesterdayDate = new Date()
+  yesterdayDate.setDate(yesterdayDate.getDate() - 1)
+
+  const yesterday =
+    yesterdayDate.toISOString().split('T')[0]
+
+  visitors.value.yesterday =
+    dates[yesterday] || 0
+
+  // LAST 7 / 30 DAYS
+  let last7 = 0
+  let last30 = 0
+  let monthTotal = 0
+  let yearTotal = 0
+
+  const now = new Date()
+
+  Object.entries(dates).forEach(([date, count]) => {
+
+    const d = new Date(date)
+
+    const diff =
+      (now - d) / (1000 * 60 * 60 * 24)
+
+    if (diff <= 7) last7 += count
+
+    if (diff <= 30) last30 += count
+
+    if (
+      d.getMonth() === now.getMonth() &&
+      d.getFullYear() === now.getFullYear()
+    ) {
+      monthTotal += count
+    }
+
+    if (
+      d.getFullYear() === now.getFullYear()
+    ) {
+      yearTotal += count
+    }
+  })
+
+  visitors.value.last7Days = last7
+  visitors.value.last30Days = last30
+  visitors.value.thisMonth = monthTotal
+  visitors.value.thisYear = yearTotal
+  visitors.value.total = stats.total
+})
 </script>
 
 <template>
@@ -49,15 +138,17 @@ const currentYear = new Date().getFullYear()
           </div>
           <!-- VISITORS -->
           <div class="col-lg-3">
-            <div class="footer-title">Offsite Visitors Count</div>
+            <div class="footer-title">
+              Offsite Visitors Count
+            </div>
             <ul class="visitors p-0 m-0">
-              <li>📘 Users Today: <strong>14</strong></li>
-              <li>📘 Users Yesterday: <strong>21</strong></li>
-              <li>📘 Users Last 7 Days: <strong>104</strong></li>
-              <li>📘 Users Last 30 Days: <strong>386</strong></li>
-              <li>📘 Users This Month: <strong>752</strong></li>
-              <li>📘 Users This Year: <strong>5,912</strong></li>
-              <li>📘 Total Users: <strong>28,502</strong></li>
+              <li>📘 Users Today: <strong>{{ visitors.today }}</strong></li>
+              <li>📘 Users Yesterday: <strong>{{ visitors.yesterday }}</strong></li>
+              <li>📘 Users Last 7 Days: <strong>{{ visitors.last7Days }}</strong></li>
+              <li>📘 Users Last 30 Days: <strong>{{ visitors.last30Days }}</strong></li>
+              <li>📘 Users This Month: <strong>{{ visitors.thisMonth }}</strong></li>
+              <li>📘 Users This Year: <strong>{{ visitors.thisYear }}</strong></li>
+              <li>📘 Total Users: <strong>{{ visitors.total }}</strong></li>
             </ul>
           </div>
         </div>

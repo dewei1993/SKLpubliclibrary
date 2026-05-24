@@ -99,14 +99,13 @@ function scrollResources(direction) {
         </div>
 
         <div class="resources-right-controls">
-          <a
-            href="https://eportal.nlp.gov.ph/eresources"
-            target="_blank"
+          <RouterLink
+            to="/resources?section=eresources"
             class="collections-link"
           >
             View all Collections
             <i class="bi bi-arrow-right"></i>
-          </a>
+          </RouterLink>
         </div>
       </div>
 
