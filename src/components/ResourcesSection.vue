@@ -57,27 +57,32 @@ function scrollResources(direction) {
             View all Collections
             <i class="bi bi-arrow-right"></i>
           </a>
-          <!-- ARROWS -->
-          <div class="resource-controls">
-            <button
-              class="btn-nav"
-              @click="scrollResources(-1)">
-              <i class="bi bi-arrow-left"></i>
-            </button>
-            <button
-              class="btn-nav"
-              @click="scrollResources(1)">
-              <i class="bi bi-arrow-right"></i>
-            </button>
-          </div>
         </div>
       </div>
       
       <!-- CARDS -->
-      <div class="resource-track" ref="resourceTrack">
-        <div v-for="(resource, index) in resources" :key="index" class="resource-card">
-          <img :src="resource" class="resource-logo" alt="E-Resources" />
+      <div class="resource-carousel-wrap">
+        <button
+          class="resource-side-arrow resource-side-arrow-left"
+          @click="scrollResources(-1)">
+          <i class="bi bi-arrow-left"></i>
+        </button>
+
+        <div class="resource-track" ref="resourceTrack">
+          <div
+            v-for="(resource, index) in resources"
+            :key="index"
+            class="resource-card">
+            <img :src="resource" class="resource-logo" alt="E-Resources" />
+          </div>
         </div>
+
+        <button
+          class="resource-side-arrow resource-side-arrow-right"
+          @click="scrollResources(1)"
+        >
+          <i class="bi bi-arrow-right"></i>
+        </button>
       </div>
     </div>
   </section>
@@ -99,26 +104,6 @@ function scrollResources(direction) {
   color: var(--neutral);
   max-width: 500px;
   font-size: 14px;
-}
-
-/* Controls */
-.resource-controls {
-  display: flex;
-  gap: 10px;
-}
-
-.btn-nav {
-  width: 42px;
-  height: 42px;
-  border: none;
-  background: #e0e0e0;
-  border-radius: 4px;
-  transition: 0.3s;
-}
-
-.btn-nav:hover {
-  background: var(--primary);
-  color: #fff;
 }
 
 /* Cards layout */
@@ -212,6 +197,61 @@ function scrollResources(direction) {
 
 .collections-link:hover {
   color: var(--secondary);
+}
+
+.resource-carousel-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.resource-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px 56px;
+  cursor: grab;
+  scrollbar-width: none;
+}
+
+.resource-track::-webkit-scrollbar {
+  display: none;
+}
+
+.resource-side-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease;
+}
+
+.resource-side-arrow:hover {
+  background: var(--secondary);
+}
+
+.resource-side-arrow-left {
+  left: 0;
+}
+
+.resource-side-arrow-right {
+  right: 0;
+}
+
+.resource-card {
+  flex: 0 0 200px;
+  height: 200px;
 }
 
 /* MOBILE */

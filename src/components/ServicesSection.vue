@@ -56,25 +56,15 @@ const serviceImages = [
   service8,
 ]
 
-const servicesTrack = ref(null)
-
 function setFeaturedActivity(activity) {
   featuredActivity.value = activity
 }
 
+const activeServiceIndex = ref(1)
+
 function scrollServices(direction) {
-  const container = servicesTrack.value
-  if (!container) return
-
-  const card = container.querySelector('.service-card')
-  if (!card) return
-
-  const cardWidth = card.offsetWidth + 24
-
-  container.scrollBy({
-    left: direction * cardWidth * 3,
-    behavior: 'smooth',
-  })
+  activeServiceIndex.value =
+    (activeServiceIndex.value + direction + serviceImages.length) % serviceImages.length
 }
 </script>
 
@@ -151,43 +141,37 @@ function scrollServices(direction) {
       <!-- ARROWS TOP RIGHT -->
         <div class="services-top-controls">
           <!-- TOP LINK -->
-          <a href="#" class="collections-link">
+          <RouterLink to="/services" class="collections-link">
             View all Services
             <i class="bi bi-arrow-right"></i>
-          </a>
-          <!-- ARROWS -->
-          <div class="services-arrow-group">
-            <button
-              class="services-arrow"
-              type="button"
-              aria-label="Previous services"
-              @click="scrollServices(-1)">
-              <i class="bi bi-arrow-left"></i>
-            </button>
-            <button
-              class="services-arrow"
-              type="button"
-              aria-label="Next services"
-              @click="scrollServices(1)">
-              <i class="bi bi-arrow-right"></i>
-            </button>
-          </div>
+          </RouterLink>
         </div>
       </div>
 
-      <!-- SLIDER BELOW ARROWS -->
-      <div class="services-slider-wrap">
-        <div class="services-track" ref="servicesTrack">
+      <!-- CENTER ENLARGED CAROUSEL -->
+      <div class="services-carousel">
+        <button class="services-side-arrow left" @click="scrollServices(-1)">
+          <i class="bi bi-arrow-left"></i>
+        </button>
+
+        <div class="services-poster-stage">
           <div
             v-for="(service, index) in serviceImages"
             :key="index"
-            class="service-card service-card-poster"
+            class="service-poster-card"
+            :class="{
+              active: index === activeServiceIndex,
+              left: index === (activeServiceIndex - 1 + serviceImages.length) % serviceImages.length,
+              right: index === (activeServiceIndex + 1) % serviceImages.length
+            }"
           >
-            <div class="service-poster-image">
-              <img :src="service" alt="Library Service" />
-            </div>
+            <img :src="service" alt="Library Service" />
           </div>
         </div>
+
+        <button class="services-side-arrow right" @click="scrollServices(1)">
+          <i class="bi bi-arrow-right"></i>
+        </button>
       </div>
     </div>
   </section>
@@ -352,25 +336,6 @@ function scrollServices(direction) {
   max-width: 620px;
 }
 
-/* =========================================
-   TOP RIGHT ARROWS
-========================================= */
-
-.services-top-controls {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 12px;
-  margin-top: 10px;
-  flex-shrink: 0;
-}
-
-/* ARROW GROUP */
-.services-arrow-group {
-  display: flex;
-  gap: 10px;
-}
-
 /* VIEW ALL */
 .collections-link {
   color: var(--primary);
@@ -385,103 +350,134 @@ function scrollServices(direction) {
   color: var(--secondary);
 }
 
-/* =========================================
-   SLIDER
-========================================= */
-
-.services-slider-wrap {
+/* CENTER ENLARGED SERVICES CAROUSEL */
+.services-carousel {
   position: relative;
-  overflow: hidden;
-}
-
-.services-track {
-  display: flex;
-  gap: 24px;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  cursor: grab;
-  scrollbar-width: none;
-  padding-bottom: 10px;
-}
-
-.services-track::-webkit-scrollbar {
-  display: none;
-}
-
-.services-track.dragging {
-  cursor: grabbing;
-}
-
-/* =========================================
-   CARD
-========================================= */
-
-.service-card-poster {
-  flex: 0 0 calc((100% - 48px) / 3);
-  max-width: calc((100% - 48px) / 3);
-  background: #fff;
-  overflow: hidden;
-  border-radius: 18px;
-  box-shadow:
-    0 12px 28px rgba(0, 0, 0, 0.08),
-    0 3px 10px rgba(0, 0, 0, 0.04);
-  transition: 0.35s ease;
-}
-
-.service-card-poster:hover {
-  transform: translateY(-6px);
-}
-
-/* =========================================
-   IMAGE
-========================================= */
-
-.service-poster-image {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-}
-
-.service-poster-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: 0.45s ease;
-}
-
-.service-card-poster:hover .service-poster-image img {
-  transform: scale(1.06);
-}
-
-/* =========================================
-   BUTTON
-========================================= */
-
-.service-poster-content {
-  margin-top: 28px;
-}
-
-
-/* =========================================
-   ARROWS
-========================================= */
-
-.services-arrow {
-  width: 42px;
-  height: 42px;
-  border: none;
-  background: #e0e0e0;
-  border-radius: 4px;
+  height: 520px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+}
+
+.services-poster-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.service-poster-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 55%;
+  opacity: 0;
+  filter: blur(6px);
+  transform: translate(-50%, -50%) scale(0.7);
+  transition: 0.45s ease;
+  pointer-events: none;
+}
+
+.service-poster-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 18px 45px rgba(0,0,0,0.18);
+}
+
+.service-poster-card.active {
+  opacity: 1;
+  filter: blur(0);
+  transform: translate(-50%, -50%) scale(1);
+  z-index: 3;
+  pointer-events: auto;
+}
+
+.service-poster-card.left {
+  opacity: 0.45;
+  filter: blur(6px);
+  transform: translate(-115%, -50%) scale(0.72);
+  z-index: 1;
+}
+
+.service-poster-card.right {
+  opacity: 0.45;
+  filter: blur(6px);
+  transform: translate(15%, -50%) scale(0.72);
+  z-index: 1;
+}
+
+/* SIDE ARROWS */
+.services-side-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+
+  width: 58px;
+  height: 58px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: var(--primary);
+  color: #fff;
+
+  font-size: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   transition: 0.3s ease;
 }
 
-.services-arrow:hover {
-  background: var(--primary);
-  color: #fff;
+.services-side-arrow.left {
+  left: 30px;
 }
+
+.services-side-arrow.right {
+  right: 30px;
+}
+
+.services-side-arrow:hover {
+  background: var(--secondary);
+}
+
+/* RESPONSIVE */
+@media (max-width: 991px) {
+  .services-carousel {
+    height: 430px;
+  }
+
+  .service-poster-card {
+    width: 75%;
+  }
+}
+
+@media (max-width: 576px) {
+  .services-carousel {
+    height: 360px;
+  }
+
+  .service-poster-card {
+    width: 86%;
+  }
+
+  .service-poster-card.left,
+  .service-poster-card.right {
+    opacity: 0;
+  }
+
+  .services-side-arrow.left {
+    left: 8px;
+  }
+
+  .services-side-arrow.right {
+    right: 8px;
+  }
+}
+
 
 /* =========================================
    RESPONSIVE
