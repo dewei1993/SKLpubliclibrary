@@ -290,7 +290,7 @@ function selectSuggestion(path) {
 
 .navbar-custom .nav-link {
   font-weight: 700;
-  color: #333;
+  color: var(--primary);
   text-transform: uppercase;
   font-size: 14px;
   padding: 16px 8px;

@@ -100,7 +100,7 @@ const filteredBooks = computed(() => {
 }
 
 .resources-page-header h1 {
-  color: #111;
+  color: var(--primary);
   font-size: clamp(34px, 4vw, 52px);
   font-weight: 900;
   margin-bottom: 10px;
@@ -140,7 +140,7 @@ const filteredBooks = computed(() => {
 }
 
 .resource-subtitle {
-  color: #111;
+  color: var(--primary);
   font-size: 24px;
   font-weight: 900;
   position: relative;

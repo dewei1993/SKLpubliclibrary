@@ -283,7 +283,7 @@ const serviceGroups = computed(() => {
 }
 
 .services-header h2 {
-  color: #111;
+  color: var(--primary);
   font-size: clamp(34px, 4vw, 52px);
   font-weight: 900;
   margin-bottom: 10px;
@@ -397,7 +397,7 @@ const serviceGroups = computed(() => {
   background: transparent;
   padding: 10px 18px;
   border-radius: 50px;
-  color: #111;
+  color: var(--primary);
   font-weight: 700;
   transition: 0.3s ease;
   font-size: 14px;

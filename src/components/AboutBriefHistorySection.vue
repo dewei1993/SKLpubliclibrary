@@ -90,7 +90,7 @@ import building2Img from '@/assets/images/building2.jpg'
 }
 
 .facilities-header h2 {
-  color: #111;
+  color: var(--primary);
   font-size: clamp(34px, 4vw, 52px);
   font-weight: 900;
   margin-bottom: 10px;

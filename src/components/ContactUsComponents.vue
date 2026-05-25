@@ -170,7 +170,7 @@
 
 .contact-info-item strong {
   display: block;
-  color: #1b280f;
+  color:var(--primary);
   font-size: 14px;
   margin-bottom: 5px;
 }

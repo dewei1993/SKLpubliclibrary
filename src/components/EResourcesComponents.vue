@@ -446,14 +446,14 @@ const filteredResources = computed(() => {
 }
 
 .resources-page-header h1 {
-  color: #111;
+  color: var(--primary);
   font-size: clamp(34px, 4vw, 52px);
   font-weight: 900;
   margin-bottom: 10px;
 }
 
 .resource-subtitle {
-  color: #111;
+  color: var(--primary);
   font-size: 24px;
   font-weight: 900;
   position: relative;
@@ -516,7 +516,7 @@ const filteredResources = computed(() => {
 .eresource-card h4 {
   font-size: 30px;
   font-weight: 900;
-  color: #111;
+  color: var(--primary);
   margin-bottom: 8px;
 }
 

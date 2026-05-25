@@ -167,7 +167,7 @@ onMounted(() => {
 .footer-top {
   background: #a3b7c4;
   padding: 46px 0;
-  color: #12324d;
+  color: var(--primary);
 }
 
 .footer-logo {
@@ -191,7 +191,7 @@ onMounted(() => {
 .footer-title {
   font-weight: 900;
   text-transform: uppercase;
-  color: var(--primary-dark);
+  color: var(--primary);
   margin-bottom: 16px;
 }
 
