@@ -117,31 +117,33 @@ onMounted(() => {
             <div class="footer-title">Quick Links</div>
 
             <div class="footer-links">
-              <RouterLink to="/about">› About Us</RouterLink>
-              <a href="#services">› Services</a>
-              <a href="#resources">› Resources</a>
-              <a href="#facilities">› Facilities</a>
-              <a href="#contact">› Contact Us</a>
+              <RouterLink to="/opac">> OPAC</RouterLink>
+              <RouterLink to="/about?section=history">> About Us</RouterLink>
+              <RouterLink to="/services">> Services</RouterLink>
+              <RouterLink to="/resources?section=eresources">> Resources</RouterLink>
+              <RouterLink to="/about?section=facilities">> Facilities</RouterLink>
+              <RouterLink to="/events">> Events</RouterLink>
+              <RouterLink to="/contact">> Contact Us</RouterLink>
             </div>
           </div>
 
           <!-- CONTACT -->
           <div class="col-lg-3">
             <div class="footer-title">Contact Information</div>
-            <p class="mb-2">
+            <p class="mb-2 sub-title">
               3rd Floor, TMX Prime Block <br />
               Tutuban Center Mall <br />
               Recto Avenue, Tondo, Manila
             </p>
-            <p class="mb-1">+63 966-2640-944</p>
-            <p class="mb-0">sentrongkarununganlibrary2007@gmail.com</p>
+            <p class="mb-1 sub-title">+63 966-2640-944</p>
+            <p class="mb-0 sub-title">sentrongkarununganlibrary2007@gmail.com</p>
           </div>
           <!-- VISITORS -->
           <div class="col-lg-3">
             <div class="footer-title">
               Offsite Visitors Count
             </div>
-            <ul class="visitors p-0 m-0">
+            <ul class="visitors p-0 m-0 sub-title">
               <li>📘 Users Today: <strong>{{ visitors.today }}</strong></li>
               <li>📘 Users Yesterday: <strong>{{ visitors.yesterday }}</strong></li>
               <li>📘 Users Last 7 Days: <strong>{{ visitors.last7Days }}</strong></li>
@@ -195,15 +197,19 @@ onMounted(() => {
   margin-bottom: 16px;
 }
 
+.sub-title {
+  color: #111;
+}
+
 .footer-links a {
   display: block;
-  color: #12324d;
+  color: #111;
   text-decoration: none;
   margin-bottom: 10px;
 }
 
 .footer-links a:hover {
-  color: var(--primary);
+  color: #111;
 }
 
 .visitors li {
