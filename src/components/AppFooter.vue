@@ -117,7 +117,7 @@ onMounted(() => {
             <div class="footer-title">Quick Links</div>
 
             <div class="footer-links">
-              <RouterLink to="/opac">> OPAC</RouterLink>
+              <RouterLink to="resources?section=opac">> OPAC</RouterLink>
               <RouterLink to="/about?section=history">> About Us</RouterLink>
               <RouterLink to="/services">> Services</RouterLink>
               <RouterLink to="/resources?section=eresources">> Resources</RouterLink>
