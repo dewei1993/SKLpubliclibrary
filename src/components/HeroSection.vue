@@ -78,7 +78,7 @@ function handleHeroSearch() {
   min-height: 620px;
   background:
     linear-gradient(rgba(15, 90, 141, 0.28), rgba(15, 90, 141, 0.35)),
-    url('@/assets/images/hero1.png') center center / cover no-repeat;
+    url('@/assets/images/hero1.webp') center center / cover no-repeat;
   overflow: hidden;
 }
 
