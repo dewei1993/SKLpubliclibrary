@@ -1,8 +1,8 @@
 <script setup>
-import col1 from '@/assets/images/col1.png'
-import col2 from '@/assets/images/col2.png'
-import col3 from '@/assets/images/col3.png'
-import col4 from '@/assets/images/col4.png'
+import col1 from '@/assets/images/col1.webp'
+import col2 from '@/assets/images/col2.webp'
+import col3 from '@/assets/images/col3.webp'
+import col4 from '@/assets/images/col4.webp'
 </script>
 
 <template>
@@ -10,24 +10,22 @@ import col4 from '@/assets/images/col4.png'
     <div class="container">
       <!-- HEADER -->
       <div
-        class="collections-header d-flex justify-content-between align-items-start flex-wrap gap-3">
+        class="collections-header d-flex justify-content-between align-items-start flex-wrap gap-3"
+      >
         <div>
           <div class="section-title-top">Collections</div>
           <h2 class="section-title text-uppercase">Featured Collections</h2>
         </div>
-          <RouterLink
-            to="/resources?section=opac"
-            class="collections-link"
-          >
-            View all Collections
-            <i class="bi bi-arrow-right"></i>
-          </RouterLink>
+        <RouterLink to="/resources?section=opac" class="collections-link">
+          View all Collections
+          <i class="bi bi-arrow-right"></i>
+        </RouterLink>
       </div>
       <!-- GRID -->
       <div class="collections-grid">
         <!-- LARGE CARD -->
         <div class="collection-card collection-card-lg">
-          <img :src="col1" alt="New Additional Collections" />
+          <img :src="col1" alt="New Additional Collections" loading="lazy" />
           <div class="collection-overlay">
             <h3>New Additional Collections</h3>
             <p>Law, Engineering, and Management Books</p>
@@ -35,7 +33,7 @@ import col4 from '@/assets/images/col4.png'
         </div>
         <!-- TOP RIGHT -->
         <div class="collection-card collection-card-wide">
-          <img :src="col2" alt="Anina ng mga Alon" />
+          <img :src="col2" alt="Anina ng mga Alon" loading="lazy" />
           <div class="collection-overlay">
             <h3>Anina ng mga Alon</h3>
             <p>Literatures and other General Collections.</p>
@@ -43,14 +41,14 @@ import col4 from '@/assets/images/col4.png'
         </div>
         <!-- SMALL -->
         <div class="collection-card">
-          <img :src="col3" alt="KRN Collections" />
+          <img :src="col3" alt="KRN Collections" loading="lazy" />
           <div class="collection-overlay">
             <h3>KRN Collections</h3>
           </div>
         </div>
         <!-- SMALL -->
         <div class="collection-card">
-          <img :src="col4" alt="Law and Careers" />
+          <img :src="col4" alt="Law and Careers" loading="lazy" />
           <div class="collection-overlay">
             <h3>Review Books</h3>
           </div>
@@ -130,7 +128,7 @@ import col4 from '@/assets/images/col4.png'
 
 /* OVERLAY */
 .collection-card::after {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(

@@ -22,7 +22,12 @@
             <div class="row g-4 justify-content-center">
               <div v-for="service in group" :key="service.id" class="col-lg-4 col-md-6">
                 <div class="service-card h-100">
-                  <img :src="service.image" :alt="service.title" class="service-image" />
+                  <img
+                    :src="service.image"
+                    :alt="service.title"
+                    class="service-image"
+                    loading="lazy"
+                  />
 
                   <div class="service-content">
                     <div class="service-icon">
@@ -113,13 +118,14 @@
               :src="selectedService?.image"
               :alt="selectedService?.title"
               class="modal-service-image"
+              loading="lazy"
             />
 
             <p class="modal-text">
               {{ selectedService?.modalText }}
             </p>
 
-            <img :src="selectedService?.qrCode" alt="QR Code" class="qr-code" />
+            <img :src="selectedService?.qrCode" alt="QR Code" class="qr-code" loading="lazy" />
 
             <p class="scan-text">Scan this QR code to book this service.</p>
 
@@ -138,23 +144,23 @@
 <script setup>
 import { ref, computed } from 'vue'
 
-import services1 from '@/assets/images/services1.png'
-import services2 from '@/assets/images/services2.png'
-import services3 from '@/assets/images/services3.png'
-import services4 from '@/assets/images/services4.png'
-import services5 from '@/assets/images/services5.png'
-import services6 from '@/assets/images/services6.png'
-import services7 from '@/assets/images/services7.png'
-import services8 from '@/assets/images/services8.png'
+import services1 from '@/assets/images/services1.webp'
+import services2 from '@/assets/images/services2.webp'
+import services3 from '@/assets/images/services3.webp'
+import services4 from '@/assets/images/services4.webp'
+import services5 from '@/assets/images/services5.webp'
+import services6 from '@/assets/images/services6.webp'
+import services7 from '@/assets/images/services7.webp'
+import services8 from '@/assets/images/services8.webp'
 
-import qr1 from '@/assets/images/qr1.png'
-import qr2 from '@/assets/images/qr2.png'
-import qr3 from '@/assets/images/qr3.png'
-import qr4 from '@/assets/images/qr4.png'
-import qr5 from '@/assets/images/qr5.png'
-import qr6 from '@/assets/images/qr6.png'
-import qr7 from '@/assets/images/qr7.png'
-import qr8 from '@/assets/images/qr8.png'
+import qr1 from '@/assets/images/qr1.webp'
+import qr2 from '@/assets/images/qr2.webp'
+import qr3 from '@/assets/images/qr3.webp'
+import qr4 from '@/assets/images/qr4.webp'
+import qr5 from '@/assets/images/qr5.webp'
+import qr6 from '@/assets/images/qr6.webp'
+import qr7 from '@/assets/images/qr7.webp'
+import qr8 from '@/assets/images/qr8.webp'
 
 const services = [
   {

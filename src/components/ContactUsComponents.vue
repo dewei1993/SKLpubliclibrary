@@ -4,7 +4,7 @@
     <div class="contact-hero">
       <div class="container">
         <h1>Contact</h1>
-            <div class="services-line"></div>
+        <div class="services-line"></div>
         <p>
           Connect with us for more information about our library services, programs, and community
           resources.
@@ -118,7 +118,7 @@
   min-height: 260px;
   background:
     linear-gradient(rgba(20, 10, 5, 0.65), rgba(20, 10, 5, 0.65)),
-    url('@/assets/images/event13.png') center/cover no-repeat;
+    url('@/assets/images/event13.webp') center/cover no-repeat;
   display: flex;
   align-items: center;
   color: #fff;
@@ -170,7 +170,7 @@
 
 .contact-info-item strong {
   display: block;
-  color:var(--primary);
+  color: var(--primary);
   font-size: 14px;
   margin-bottom: 5px;
 }

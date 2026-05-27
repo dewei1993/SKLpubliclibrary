@@ -1,20 +1,20 @@
 <script setup>
 import { ref } from 'vue'
 
-import facility8 from '@/assets/images/facility8.jpeg'
-import facility9 from '@/assets/images/facility9.jpg'
-import facility2 from '@/assets/images/facility2.jpg'
-import facility6 from '@/assets/images/facility6.jpg'
-import facility14 from '@/assets/images/facility14.jpg'
-import facility5 from '@/assets/images/facility5.jpg'
-import facility16 from '@/assets/images/facility16.jpg'
-import facility7 from '@/assets/images/facility7.jpeg'
-import facility19 from '@/assets/images/facility19.jpg'
-import facility11 from '@/assets/images/facility11.jpg'
-import facility10 from '@/assets/images/facility10.jpg'
-import facility15 from '@/assets/images/facility15.jpg'
-import facility17 from '@/assets/images/facility17.jpg'
-import facility18 from '@/assets/images/facility18.jpg'
+import facility8 from '@/assets/images/facility8.webp'
+import facility9 from '@/assets/images/facility9.webp'
+import facility2 from '@/assets/images/facility2.webp'
+import facility6 from '@/assets/images/facility6.webp'
+import facility14 from '@/assets/images/facility14.webp'
+import facility5 from '@/assets/images/facility5.webp'
+import facility16 from '@/assets/images/facility16.webp'
+import facility7 from '@/assets/images/facility7.webp'
+import facility19 from '@/assets/images/facility19.webp'
+import facility11 from '@/assets/images/facility11.webp'
+import facility10 from '@/assets/images/facility10.webp'
+import facility15 from '@/assets/images/facility15.webp'
+import facility17 from '@/assets/images/facility17.webp'
+import facility18 from '@/assets/images/facility18.webp'
 
 const facilitiesTrack = ref(null)
 
@@ -127,6 +127,7 @@ function prevImage() {
         :src="facilities[currentImage].image"
         :alt="facilities[currentImage].title"
         class="preview-image"
+        loading="lazy"
       />
       <div class="preview-label">
         <h3>{{ facilities[currentImage].title }}</h3>

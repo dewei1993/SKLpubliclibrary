@@ -1,7 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import sklLogo from '@/assets/images/SKLlogo.png'
-
+import sklLogo from '@/assets/images/SKLlogo.webp'
 
 const currentYear = new Date().getFullYear()
 
@@ -16,7 +15,6 @@ const visitors = ref({
 })
 
 onMounted(() => {
-
   const today = new Date().toISOString().split('T')[0]
 
   let stats = JSON.parse(localStorage.getItem('visitorStats'))
@@ -32,10 +30,7 @@ onMounted(() => {
   stats.dates[today] = (stats.dates[today] || 0) + 1
   stats.total += 1
 
-  localStorage.setItem(
-    'visitorStats',
-    JSON.stringify(stats)
-  )
+  localStorage.setItem('visitorStats', JSON.stringify(stats))
 
   const dates = stats.dates
 
@@ -46,11 +41,9 @@ onMounted(() => {
   const yesterdayDate = new Date()
   yesterdayDate.setDate(yesterdayDate.getDate() - 1)
 
-  const yesterday =
-    yesterdayDate.toISOString().split('T')[0]
+  const yesterday = yesterdayDate.toISOString().split('T')[0]
 
-  visitors.value.yesterday =
-    dates[yesterday] || 0
+  visitors.value.yesterday = dates[yesterday] || 0
 
   // LAST 7 / 30 DAYS
   let last7 = 0
@@ -61,26 +54,19 @@ onMounted(() => {
   const now = new Date()
 
   Object.entries(dates).forEach(([date, count]) => {
-
     const d = new Date(date)
 
-    const diff =
-      (now - d) / (1000 * 60 * 60 * 24)
+    const diff = (now - d) / (1000 * 60 * 60 * 24)
 
     if (diff <= 7) last7 += count
 
     if (diff <= 30) last30 += count
 
-    if (
-      d.getMonth() === now.getMonth() &&
-      d.getFullYear() === now.getFullYear()
-    ) {
+    if (d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear()) {
       monthTotal += count
     }
 
-    if (
-      d.getFullYear() === now.getFullYear()
-    ) {
+    if (d.getFullYear() === now.getFullYear()) {
       yearTotal += count
     }
   })
@@ -102,7 +88,7 @@ onMounted(() => {
           <div class="col-lg-3 text-center text-lg-start">
             <div class="footer-logo mx-auto mx-lg-0">
               <RouterLink to="/">
-                <img :src="sklLogo" alt="Footer Logo" />
+                <img :src="sklLogo" alt="Footer Logo" loading="lazy" />
               </RouterLink>
             </div>
 
@@ -140,17 +126,29 @@ onMounted(() => {
           </div>
           <!-- VISITORS -->
           <div class="col-lg-3">
-            <div class="footer-title">
-              Offsite Visitors Count
-            </div>
+            <div class="footer-title">Offsite Visitors Count</div>
             <ul class="visitors p-0 m-0 sub-title">
-              <li>📘 Users Today: <strong>{{ visitors.today }}</strong></li>
-              <li>📘 Users Yesterday: <strong>{{ visitors.yesterday }}</strong></li>
-              <li>📘 Users Last 7 Days: <strong>{{ visitors.last7Days }}</strong></li>
-              <li>📘 Users Last 30 Days: <strong>{{ visitors.last30Days }}</strong></li>
-              <li>📘 Users This Month: <strong>{{ visitors.thisMonth }}</strong></li>
-              <li>📘 Users This Year: <strong>{{ visitors.thisYear }}</strong></li>
-              <li>📘 Total Users: <strong>{{ visitors.total }}</strong></li>
+              <li>
+                📘 Users Today: <strong>{{ visitors.today }}</strong>
+              </li>
+              <li>
+                📘 Users Yesterday: <strong>{{ visitors.yesterday }}</strong>
+              </li>
+              <li>
+                📘 Users Last 7 Days: <strong>{{ visitors.last7Days }}</strong>
+              </li>
+              <li>
+                📘 Users Last 30 Days: <strong>{{ visitors.last30Days }}</strong>
+              </li>
+              <li>
+                📘 Users This Month: <strong>{{ visitors.thisMonth }}</strong>
+              </li>
+              <li>
+                📘 Users This Year: <strong>{{ visitors.thisYear }}</strong>
+              </li>
+              <li>
+                📘 Total Users: <strong>{{ visitors.total }}</strong>
+              </li>
             </ul>
           </div>
         </div>

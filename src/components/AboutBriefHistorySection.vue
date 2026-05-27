@@ -1,6 +1,6 @@
 <script setup>
-import building1Img from '@/assets/images/building1.jpeg'
-import building2Img from '@/assets/images/building2.jpg'
+import building1Img from '@/assets/images/building1.webp'
+import building2Img from '@/assets/images/building2.webp'
 </script>
 
 <template>
@@ -42,14 +42,14 @@ import building2Img from '@/assets/images/building2.jpg'
         </div>
 
         <div class="col-lg-5">
-          <img :src="building1Img" alt="Library Shelves" class="history-img" />
+          <img :src="building1Img" alt="Library Shelves" class="history-img" loading="lazy" />
         </div>
       </div>
 
       <!-- SECOND ROW -->
       <div class="row g-5 align-items-start mt-4">
         <div class="col-lg-5">
-          <img :src="building2Img" alt="Library Interior" class="history-img" />
+          <img :src="building2Img" alt="Library Interior" class="history-img" loading="lazy" />
         </div>
         <div class="col-lg-7">
           <p>

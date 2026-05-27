@@ -1,19 +1,19 @@
 <script setup>
 import { ref } from 'vue'
 
-import event1 from '@/assets/images/event1.png'
-import event2 from '@/assets/images/event2.png'
-import event3 from '@/assets/images/event3.png'
-import event4 from '@/assets/images/event4.png'
+import event1 from '@/assets/images/event1.webp'
+import event2 from '@/assets/images/event2.webp'
+import event3 from '@/assets/images/event3.webp'
+import event4 from '@/assets/images/event4.webp'
 
-import service1 from '@/assets/images/services1.png'
-import service2 from '@/assets/images/services2.png'
-import service3 from '@/assets/images/services3.png'
-import service4 from '@/assets/images/services4.png'
-import service5 from '@/assets/images/services5.png'
-import service6 from '@/assets/images/services6.png'
-import service7 from '@/assets/images/services7.png'
-import service8 from '@/assets/images/services8.png'
+import service1 from '@/assets/images/services1.webp'
+import service2 from '@/assets/images/services2.webp'
+import service3 from '@/assets/images/services3.webp'
+import service4 from '@/assets/images/services4.webp'
+import service5 from '@/assets/images/services5.webp'
+import service6 from '@/assets/images/services6.webp'
+import service7 from '@/assets/images/services7.webp'
+import service8 from '@/assets/images/services8.webp'
 
 const featuredActivity = ref({
   title: 'SM Care Book Donation Drive',
@@ -42,7 +42,7 @@ const activities = [
     title: 'Library Orientation Program',
     desc: 'An orientation activity introducing library users to the facilities, services, collections, and digital resources of Sentro ng Karunungan Library.',
     img: event3,
-  }
+  },
 ]
 
 const serviceImages = [
@@ -81,7 +81,7 @@ function scrollServices(direction) {
         <div class="col-lg-8">
           <div class="featured-news-card">
             <div class="featured-news-image">
-              <img :src="featuredActivity.img" alt="Featured Event" />
+              <img :src="featuredActivity.img" alt="Featured Event" loading="lazy" />
             </div>
 
             <div class="featured-news-content">
@@ -91,9 +91,7 @@ function scrollServices(direction) {
 
               <p>{{ featuredActivity.desc }}</p>
 
-              <RouterLink to="/events" class="readmore-btn">
-                Read More
-              </RouterLink>
+              <RouterLink to="/events" class="readmore-btn"> Read More </RouterLink>
             </div>
           </div>
         </div>
@@ -114,11 +112,7 @@ function scrollServices(direction) {
                 {{ activity.title }}
               </h5>
 
-              <RouterLink
-                to="/events"
-                class="event-details-link">
-                Read More
-              </RouterLink>
+              <RouterLink to="/events" class="event-details-link"> Read More </RouterLink>
             </div>
           </div>
         </div>
@@ -130,15 +124,16 @@ function scrollServices(direction) {
   <section id="library-services" class="library-services-section">
     <div class="container">
       <div class="d-flex justify-content-between align-items-center mb-4">
-      <div>
-        <div class="section-title-top">SERVICES</div>
-        <h2 class="section-title text-uppercase">Library Services</h2>
-        <p class="services-subtitle">
-          Providing the tools and environments necessary for academic success and lifelong learning.
-        </p>
-      </div>
+        <div>
+          <div class="section-title-top">SERVICES</div>
+          <h2 class="section-title text-uppercase">Library Services</h2>
+          <p class="services-subtitle">
+            Providing the tools and environments necessary for academic success and lifelong
+            learning.
+          </p>
+        </div>
 
-      <!-- ARROWS TOP RIGHT -->
+        <!-- ARROWS TOP RIGHT -->
         <div class="services-top-controls">
           <!-- TOP LINK -->
           <RouterLink to="/services" class="collections-link">
@@ -161,11 +156,12 @@ function scrollServices(direction) {
             class="service-poster-card"
             :class="{
               active: index === activeServiceIndex,
-              left: index === (activeServiceIndex - 1 + serviceImages.length) % serviceImages.length,
-              right: index === (activeServiceIndex + 1) % serviceImages.length
+              left:
+                index === (activeServiceIndex - 1 + serviceImages.length) % serviceImages.length,
+              right: index === (activeServiceIndex + 1) % serviceImages.length,
             }"
           >
-            <img :src="service" alt="Library Service" />
+            <img :src="service" alt="Library Service" loading="lazy" />
           </div>
         </div>
 
@@ -382,7 +378,7 @@ function scrollServices(direction) {
   width: 100%;
   height: auto;
   border-radius: 18px;
-  box-shadow: 0 18px 45px rgba(0,0,0,0.18);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
 }
 
 .service-poster-card.active {
@@ -477,7 +473,6 @@ function scrollServices(direction) {
     right: 8px;
   }
 }
-
 
 /* =========================================
    RESPONSIVE

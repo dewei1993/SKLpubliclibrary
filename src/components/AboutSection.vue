@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import aboutImage from '@/assets/images/about1.png'
+import aboutImage from '@/assets/images/about1.webp'
 
 const activeTab = ref('mission')
 
@@ -38,7 +38,7 @@ function truncateText(text, words = 50) {
         <!-- IMAGE -->
         <div class="col-lg-5">
           <div class="about-image">
-            <img :src="aboutImage" alt="Sentro ng Karunungan Library" />
+            <img :src="aboutImage" alt="Sentro ng Karunungan Library" loading="lazy" />
 
             <div class="about-quote">
               “A library is not a luxury but one of the necessities of life.”

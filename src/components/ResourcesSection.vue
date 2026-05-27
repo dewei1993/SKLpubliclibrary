@@ -1,17 +1,17 @@
 <script setup>
 import { ref } from 'vue'
 
-import e1 from '@/assets/images/e1.png'
-import e2 from '@/assets/images/e2.png'
-import e3 from '@/assets/images/e3.png'
-import e4 from '@/assets/images/e4.png'
-import e5 from '@/assets/images/e5.png'
-import e6 from '@/assets/images/e6.png'
-import e7 from '@/assets/images/e7.png'
-import e8 from '@/assets/images/e8.png'
-import e9 from '@/assets/images/e9.png'
-import e10 from '@/assets/images/e10.png'
-import e11 from '@/assets/images/e11.png'
+import e1 from '@/assets/images/e1.webp'
+import e2 from '@/assets/images/e2.webp'
+import e3 from '@/assets/images/e3.webp'
+import e4 from '@/assets/images/e4.webp'
+import e5 from '@/assets/images/e5.webp'
+import e6 from '@/assets/images/e6.webp'
+import e7 from '@/assets/images/e7.webp'
+import e8 from '@/assets/images/e8.webp'
+import e9 from '@/assets/images/e9.webp'
+import e10 from '@/assets/images/e10.webp'
+import e11 from '@/assets/images/e11.webp'
 
 const resourceTrack = ref(null)
 
@@ -40,7 +40,7 @@ const resources = [
     image: e6,
     link: 'https://storylineonline.net/',
   },
-    {
+  {
     image: e7,
     link: 'http://www.childrenslibrary.org/',
   },
@@ -83,26 +83,20 @@ function scrollResources(direction) {
 <template>
   <section id="resources" class="resources-section">
     <div class="container">
-
       <div class="resources-header-wrap">
         <div>
           <div class="section-title-top">E-Resources</div>
 
-          <h2 class="section-title text-uppercase">
-            OPEN EDUCATIONAL RESOURCES
-          </h2>
+          <h2 class="section-title text-uppercase">OPEN EDUCATIONAL RESOURCES</h2>
 
           <p class="resources-subtext">
-            Access a curated digital environment of open-license materials,
-            textbooks, and peer-reviewed research.
+            Access a curated digital environment of open-license materials, textbooks, and
+            peer-reviewed research.
           </p>
         </div>
 
         <div class="resources-right-controls">
-          <RouterLink
-            to="/resources?section=eresources"
-            class="collections-link"
-          >
+          <RouterLink to="/resources?section=eresources" class="collections-link">
             View all Collections
             <i class="bi bi-arrow-right"></i>
           </RouterLink>
@@ -110,10 +104,7 @@ function scrollResources(direction) {
       </div>
 
       <div class="resource-carousel-wrap">
-        <button
-          class="resource-side-arrow resource-side-arrow-left"
-          @click="scrollResources(-1)"
-        >
+        <button class="resource-side-arrow resource-side-arrow-left" @click="scrollResources(-1)">
           <i class="bi bi-arrow-left"></i>
         </button>
 
@@ -125,17 +116,10 @@ function scrollResources(direction) {
             target="_blank"
             class="resource-card"
           >
-            <img
-              :src="resource.image"
-              class="resource-logo"
-              alt="E-Resources"
-            />
+            <img :src="resource.image" class="resource-logo" alt="E-Resources" loading="lazy" />
           </a>
         </div>
-        <button
-          class="resource-side-arrow resource-side-arrow-right"
-          @click="scrollResources(1)"
-        >
+        <button class="resource-side-arrow resource-side-arrow-right" @click="scrollResources(1)">
           <i class="bi bi-arrow-right"></i>
         </button>
       </div>
@@ -310,7 +294,6 @@ function scrollResources(direction) {
 
 /* MOBILE */
 @media (max-width: 768px) {
-
   .resources-header-wrap {
     flex-direction: column;
   }

@@ -1,10 +1,10 @@
 <script setup>
 import { ref } from 'vue'
 
-import missionImg from '@/assets/images/event1.png'
-import visionImg from '@/assets/images/event1.png'
-import goalsImg from '@/assets/images/event1.png'
-import objectivesImg from '@/assets/images/event1.png'
+import missionImg from '@/assets/images/event1.webp'
+import visionImg from '@/assets/images/event1.webp'
+import goalsImg from '@/assets/images/event1.webp'
+import objectivesImg from '@/assets/images/event1.webp'
 
 const activeVmgo = ref('mission')
 
@@ -66,7 +66,7 @@ const vmgoItems = [
           :class="{ active: activeVmgo === item.key }"
           @mouseenter="activeVmgo = item.key"
         >
-          <img :src="item.image" :alt="item.title" />
+          <img :src="item.image" :alt="item.title" loading="lazy" />
 
           <div class="vmgo-slide-overlay">
             <h3>{{ item.title }}</h3>

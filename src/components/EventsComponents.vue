@@ -1,10 +1,10 @@
 <script setup>
 import { ref } from 'vue'
 
-import event1 from '@/assets/images/event1.png'
-import event2 from '@/assets/images/event2.png'
-import event3 from '@/assets/images/event3.png'
-import event4 from '@/assets/images/event4.png'
+import event1 from '@/assets/images/event1.webp'
+import event2 from '@/assets/images/event2.webp'
+import event3 from '@/assets/images/event3.webp'
+import event4 from '@/assets/images/event4.webp'
 
 const selectedEvent = ref(null)
 
@@ -15,10 +15,9 @@ const events = [
     image: event1,
     description:
       'SKL received more than 40 boxes of donated books and learning materials through the SM Cares Book Donation Drive Project to support literacy and community learning.',
-    fullContent:
-      `The SM Cares Book Donation Drive Project has become a meaningful initiative in promoting literacy, education, and community development through the sharing of knowledge resources. As one of the chosen recipients of this generous program, the Sentro ng Karunungan Library (SKL) proudly received more than 40 boxes of general collection materials composed of books and other learning resources beneficial to readers of all ages. The donation serves as a valuable addition to the library’s growing collection and reflects the shared commitment of both organizations in supporting accessible education and lifelong learning within the community.
+    fullContent: `The SM Cares Book Donation Drive Project has become a meaningful initiative in promoting literacy, education, and community development through the sharing of knowledge resources. As one of the chosen recipients of this generous program, the Sentro ng Karunungan Library (SKL) proudly received more than 40 boxes of general collection materials composed of books and other learning resources beneficial to readers of all ages. The donation serves as a valuable addition to the library’s growing collection and reflects the shared commitment of both organizations in supporting accessible education and lifelong learning within the community.
       The donated materials include a wide range of subjects and genres that can greatly assist students, researchers, teachers, and regular library users in their educational and personal reading needs. These resources are expected to strengthen the library’s services by providing updated and diverse reading materials that encourage reading habits, academic excellence, and intellectual growth. Through this initiative, SKL continues its mission of becoming a welcoming learning hub where everyone can freely access information, knowledge, and opportunities for self-development.
-      SKL extends its heartfelt gratitude to SM Cares and all individuals involved in making the Book Donation Drive Project possible. Their generosity and support greatly contribute to the improvement of library services and the promotion of a reading culture in the community. The library remains committed to maximizing these resources for the benefit of its readers and hopes to continue building partnerships that inspire education, literacy, and community empowerment for future generations.`
+      SKL extends its heartfelt gratitude to SM Cares and all individuals involved in making the Book Donation Drive Project possible. Their generosity and support greatly contribute to the improvement of library services and the promotion of a reading culture in the community. The library remains committed to maximizing these resources for the benefit of its readers and hopes to continue building partnerships that inspire education, literacy, and community empowerment for future generations.`,
   },
 
   {
@@ -26,10 +25,10 @@ const events = [
     dateCreated: 'July 28, 2024',
     image: event2,
     description:
-      'A community-based livelihood activity that provided practical skills, learning opportunities, and empowerment programs for participants.',    
+      'A community-based livelihood activity that provided practical skills, learning opportunities, and empowerment programs for participants.',
     fullContent: `The Livelihood Program of Sentro ng Karunungan Library was conducted to provide community members with practical knowledge and skills that can help improve their livelihood opportunities and daily living. The program featured learning sessions focused on basic entrepreneurship, creativity, and sustainable income-generating activities that encourage self-development and community empowerment.
       Participants were given the opportunity to learn from resource speakers and facilitators who shared valuable techniques, experiences, and guidance related to small business ideas, financial awareness, and productive skills. The activity also encouraged collaboration and participation among attendees, promoting confidence, creativity, and continuous learning within the community.
-      Through this initiative, the library continues to expand its role beyond providing books and information resources by becoming an active partner in community development. The Livelihood Program reflects the library’s commitment to supporting education, empowerment, and lifelong learning opportunities for individuals and families in the community.`  
+      Through this initiative, the library continues to expand its role beyond providing books and information resources by becoming an active partner in community development. The Livelihood Program reflects the library’s commitment to supporting education, empowerment, and lifelong learning opportunities for individuals and families in the community.`,
   },
 
   {
@@ -40,7 +39,7 @@ const events = [
       'An orientation activity introducing library users to the facilities, services, collections, and digital resources of Sentro ng Karunungan Library.',
     fullContent: `The Library Orientation Program was organized to introduce students, visitors, and community members to the different services, facilities, and resources available at Sentro ng Karunungan Library. The activity aimed to familiarize participants with proper library usage, borrowing procedures, available collections, and digital resources that support learning and research.
       During the orientation, participants toured the different sections of the library and learned about the various programs and services offered, including reference assistance, online resources, internet access, and community activities. Library staff also discussed the importance of responsible library use and how users can maximize available resources for academic and personal development.
-      The orientation program serves as an important initiative in promoting information literacy and encouraging active library participation among users. Through this activity, the library strengthens its mission of providing accessible, organized, and user-friendly services that support education, research, and lifelong learning in the community.`  
+      The orientation program serves as an important initiative in promoting information literacy and encouraging active library participation among users. Through this activity, the library strengthens its mission of providing accessible, organized, and user-friendly services that support education, research, and lifelong learning in the community.`,
   },
 
   {
@@ -51,8 +50,8 @@ const events = [
       'A literacy and community engagement initiative that extends library programs, reading activities, and educational services beyond the library.',
     fullContent: `The Library Outreach Program was conducted as part of Sentro ng Karunungan Library’s continuing effort to promote literacy, education, and community engagement beyond the library premises. The program aimed to bring library services and learning activities closer to schools, organizations, and communities that have limited access to educational resources.
       The outreach activity included storytelling sessions, reading programs, educational discussions, and the distribution of informational materials designed to encourage reading habits and lifelong learning among participants. Through interactive activities and community involvement, the program created opportunities for learners of all ages to experience the value of libraries and accessible information resources.
-      Through the Library Outreach Program, SKL continues to strengthen partnerships and extend its services to wider communities. The activity reflects the library’s commitment to inclusive education, public service, and community empowerment through knowledge-sharing and literacy development initiatives.`  
-  }
+      Through the Library Outreach Program, SKL continues to strengthen partnerships and extend its services to wider communities. The activity reflects the library’s commitment to inclusive education, public service, and community empowerment through knowledge-sharing and literacy development initiatives.`,
+  },
 ]
 
 function openEvent(event) {
@@ -68,7 +67,7 @@ function closeEvent() {
   <!-- HEADER -->
   <div class="events-page-header text-center">
     <h1>Library Activities and Programs</h1>
-        <div class="services-line"></div>
+    <div class="services-line"></div>
     <p>
       Stay updated with the latest activities, community programs, learning events, and public
       service initiatives of Sentro ng Karunungan Library.
@@ -78,12 +77,8 @@ function closeEvent() {
   <section class="events-page-section">
     <div class="container">
       <div class="events-grid">
-        <div
-          v-for="(event, index) in events"
-          :key="index"
-          class="event-card-box"
-        >
-          <img :src="event.image" :alt="event.title" />
+        <div v-for="(event, index) in events" :key="index" class="event-card-box">
+          <img :src="event.image" :alt="event.title" loading="lazy" />
 
           <div class="event-card-content">
             <div class="event-date-created">
@@ -96,11 +91,7 @@ function closeEvent() {
               {{ event.description }}
             </p>
 
-            <button
-              type="button"
-              class="event-readmore-btn"
-              @click="openEvent(event)"
-            >
+            <button type="button" class="event-readmore-btn" @click="openEvent(event)">
               Read More
               <i class="bi bi-arrow-right"></i>
             </button>
@@ -111,27 +102,11 @@ function closeEvent() {
   </section>
 
   <!-- EVENT MODAL -->
-  <div
-    v-if="selectedEvent"
-    class="event-modal-overlay"
-    @click="closeEvent"
-  >
-    <div
-      class="event-modal"
-      @click.stop
-    >
-      <button
-        class="event-modal-close"
-        type="button"
-        @click="closeEvent"
-      >
-        ×
-      </button>
+  <div v-if="selectedEvent" class="event-modal-overlay" @click="closeEvent">
+    <div class="event-modal" @click.stop>
+      <button class="event-modal-close" type="button" @click="closeEvent">×</button>
 
-      <img
-        :src="selectedEvent.image"
-        :alt="selectedEvent.title"
-      />
+      <img :src="selectedEvent.image" :alt="selectedEvent.title" loading="lazy" />
 
       <div class="event-modal-content">
         <div class="event-modal-date">
@@ -256,7 +231,7 @@ function closeEvent() {
 .event-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.75);
+  background: rgba(0, 0, 0, 0.75);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -306,7 +281,7 @@ function closeEvent() {
   height: 42px;
   border: none;
   border-radius: 50%;
-  background: rgba(255,255,255,0.95);
+  background: rgba(255, 255, 255, 0.95);
   font-size: 28px;
   font-weight: 700;
   cursor: pointer;
