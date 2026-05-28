@@ -170,7 +170,7 @@
 
 .contact-info-item strong {
   display: block;
-  color: var(--primary);
+  color: #111;
   font-size: 14px;
   margin-bottom: 5px;
 }
@@ -211,14 +211,14 @@
 
 .contact-location h5,
 .contact-social h5 {
-  color: #253910;
+  color: #003045;
   font-size: 15px;
   font-weight: 900;
 }
 
 .contact-location p,
 .contact-location span {
-  color: #4f5a44;
+  color: #111;
   font-size: 14px;
 }
 

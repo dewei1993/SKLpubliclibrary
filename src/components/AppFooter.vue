@@ -14,38 +14,22 @@ const visitors = ref({
   total: 0,
 })
 
-onMounted(() => {
-  const today = new Date().toISOString().split('T')[0]
+function getDateKey(date = new Date()) {
+  return date.toISOString().split('T')[0]
+}
 
-  let stats = JSON.parse(localStorage.getItem('visitorStats'))
-
-  if (!stats) {
-    stats = {
-      dates: {},
-      total: 0,
-    }
-  }
-
-  // ADD TODAY VISIT
-  stats.dates[today] = (stats.dates[today] || 0) + 1
-  stats.total += 1
-
-  localStorage.setItem('visitorStats', JSON.stringify(stats))
-
+function updateVisitorDisplay(stats) {
   const dates = stats.dates
+  const today = getDateKey()
 
-  // TODAY
   visitors.value.today = dates[today] || 0
 
-  // YESTERDAY
   const yesterdayDate = new Date()
   yesterdayDate.setDate(yesterdayDate.getDate() - 1)
-
-  const yesterday = yesterdayDate.toISOString().split('T')[0]
+  const yesterday = getDateKey(yesterdayDate)
 
   visitors.value.yesterday = dates[yesterday] || 0
 
-  // LAST 7 / 30 DAYS
   let last7 = 0
   let last30 = 0
   let monthTotal = 0
@@ -55,14 +39,15 @@ onMounted(() => {
 
   Object.entries(dates).forEach(([date, count]) => {
     const d = new Date(date)
-
     const diff = (now - d) / (1000 * 60 * 60 * 24)
 
     if (diff <= 7) last7 += count
-
     if (diff <= 30) last30 += count
 
-    if (d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear()) {
+    if (
+      d.getMonth() === now.getMonth() &&
+      d.getFullYear() === now.getFullYear()
+    ) {
       monthTotal += count
     }
 
@@ -76,6 +61,32 @@ onMounted(() => {
   visitors.value.thisMonth = monthTotal
   visitors.value.thisYear = yearTotal
   visitors.value.total = stats.total
+}
+
+onMounted(() => {
+  const today = getDateKey()
+
+  let stats = JSON.parse(localStorage.getItem('visitorStats'))
+
+  if (!stats) {
+    stats = {
+      dates: {},
+      total: 0,
+    }
+  }
+
+  const sessionKey = `visited-${today}`
+
+  // Count only once per browser session per day
+  if (!sessionStorage.getItem(sessionKey)) {
+    stats.dates[today] = (stats.dates[today] || 0) + 1
+    stats.total += 1
+
+    localStorage.setItem('visitorStats', JSON.stringify(stats))
+    sessionStorage.setItem(sessionKey, 'true')
+  }
+
+  updateVisitorDisplay(stats)
 })
 </script>
 
