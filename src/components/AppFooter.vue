@@ -15,20 +15,37 @@ const visitors = ref({
   total: 0,
 })
 
+// PH LOCAL DATE FORMAT: YYYY-MM-DD
 function getDateKey(date = new Date()) {
-  return date.toISOString().split('T')[0]
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const day = String(date.getDate()).padStart(2, '0')
+
+  return `${year}-${month}-${day}`
+}
+
+function getStoredStats() {
+  const savedStats = localStorage.getItem('visitorStats')
+
+  if (!savedStats) {
+    return {
+      dates: {},
+      total: 0,
+    }
+  }
+
+  return JSON.parse(savedStats)
 }
 
 function updateVisitorDisplay(stats) {
-  const dates = stats.dates
+  const dates = stats.dates || {}
   const today = getDateKey()
-
-  visitors.value.today = dates[today] || 0
 
   const yesterdayDate = new Date()
   yesterdayDate.setDate(yesterdayDate.getDate() - 1)
   const yesterday = getDateKey(yesterdayDate)
 
+  visitors.value.today = dates[today] || 0
   visitors.value.yesterday = dates[yesterday] || 0
 
   let last7 = 0
@@ -38,21 +55,31 @@ function updateVisitorDisplay(stats) {
 
   const now = new Date()
 
-  Object.entries(dates).forEach(([date, count]) => {
-    const d = new Date(date)
-    const diff = (now - d) / (1000 * 60 * 60 * 24)
+  Object.entries(dates).forEach(([dateKey, count]) => {
+    const [year, month, day] = dateKey.split('-').map(Number)
+    const savedDate = new Date(year, month - 1, day)
 
-    if (diff <= 7) last7 += count
-    if (diff <= 30) last30 += count
+    const diffDays = Math.floor(
+      (new Date(now.getFullYear(), now.getMonth(), now.getDate()) - savedDate) /
+        (1000 * 60 * 60 * 24)
+    )
+
+    if (diffDays >= 0 && diffDays < 7) {
+      last7 += count
+    }
+
+    if (diffDays >= 0 && diffDays < 30) {
+      last30 += count
+    }
 
     if (
-      d.getMonth() === now.getMonth() &&
-      d.getFullYear() === now.getFullYear()
+      savedDate.getMonth() === now.getMonth() &&
+      savedDate.getFullYear() === now.getFullYear()
     ) {
       monthTotal += count
     }
 
-    if (d.getFullYear() === now.getFullYear()) {
+    if (savedDate.getFullYear() === now.getFullYear()) {
       yearTotal += count
     }
   })
@@ -61,19 +88,20 @@ function updateVisitorDisplay(stats) {
   visitors.value.last30Days = last30
   visitors.value.thisMonth = monthTotal
   visitors.value.thisYear = yearTotal
-  visitors.value.total = stats.total
+  visitors.value.total = stats.total || 0
 }
 
 onMounted(() => {
   const today = getDateKey()
 
-  let stats = JSON.parse(localStorage.getItem('visitorStats'))
+  const stats = getStoredStats()
 
-  if (!stats) {
-    stats = {
-      dates: {},
-      total: 0,
-    }
+  if (!stats.dates) {
+    stats.dates = {}
+  }
+
+  if (!stats.total) {
+    stats.total = 0
   }
 
   const sessionKey = `visited-${today}`
