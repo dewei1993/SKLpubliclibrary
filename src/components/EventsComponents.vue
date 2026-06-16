@@ -11,7 +11,7 @@ const selectedEvent = ref(null)
 const events = [
   {
     title: 'SM Care Book Donation Drive',
-    dateCreated: 'July 24, 2024',
+    dateCreated: 'November 12, 2025',
     image: event1,
     description:
       'SKL received more than 40 boxes of donated books and learning materials through the SM Cares Book Donation Drive Project to support literacy and community learning.',
@@ -22,7 +22,7 @@ const events = [
 
   {
     title: 'Livelihood Program',
-    dateCreated: 'July 28, 2024',
+    dateCreated: 'March 14, 2025',
     image: event2,
     description:
       'A community-based livelihood activity that provided practical skills, learning opportunities, and empowerment programs for participants.',
@@ -33,7 +33,7 @@ const events = [
 
   {
     title: 'Library Orientation',
-    dateCreated: 'August 05, 2024',
+    dateCreated: 'June 25, 2024',
     image: event3,
     description:
       'An orientation activity introducing library users to the facilities, services, collections, and digital resources of Sentro ng Karunungan Library.',
@@ -44,7 +44,7 @@ const events = [
 
   {
     title: 'Library Outreach Program',
-    dateCreated: 'August 12, 2024',
+    dateCreated: 'February 11, 2025',
     image: event4,
     description:
       'A literacy and community engagement initiative that extends library programs, reading activities, and educational services beyond the library.',

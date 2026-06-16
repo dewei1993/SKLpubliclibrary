@@ -28,7 +28,9 @@ const vmgoItems = [
     title: 'Goals',
     image: goalsImg,
     content: `To provide the best possible access to relevant information within a sustainable environment.
-1. Develop the library at its best in serving and providing resources and programs for the community; 2. Develop the staff in building their skills for them to serve the community confidently; and 3. Develop the library, people and community to connect, inspire, and engage to increase opportunities for people to experience and share cultural expression and beyond.`,
+1. Develop the library at its best in serving and providing resources and programs for the community; 
+2. Develop the staff in building their skills for them to serve the community confidently; and 
+3. Develop the library, people and community to connect, inspire, and engage to increase opportunities for people to experience and share cultural expression and beyond.`,
   },
   {
     key: 'objectives',

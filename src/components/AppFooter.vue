@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import sklLogo from '@/assets/images/SKLlogo.webp'
+import rplogo from '@/assets/images/rp-logo.webp'
 
 const currentYear = new Date().getFullYear()
 
@@ -166,6 +167,114 @@ onMounted(() => {
       </div>
     </div>
 
+<!-- GOVPH SECTION -->
+<div class="govph-section">
+  <div class="container">
+    <div class="row g-5 align-items-start">
+
+      <!-- REPUBLIC -->
+      <div class="col-lg-3 text-center text-lg-start">
+        <div class="govph-seal">
+          <img
+            :src=rplogo
+            alt="Republic of the Philippines"
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+      <!-- REPUBLIC -->
+      <div class="col-lg-3">
+        <h5>REPUBLIC OF THE PHILIPPINES</h5>
+
+        <p>
+          All content is in the public domain unless otherwise stated.
+        </p>
+      </div>
+
+      <!-- ABOUT GOVPH -->
+      <div class="col-lg-3">
+        <h5>ABOUT GOVPH</h5>
+
+        <p>
+          Learn more about the Philippine government, its structure,
+          how government works and the people behind it.
+        </p>
+
+        <ul class="govph-links">
+          <li>
+            <a
+              href="https://data.gov.ph"
+              target="_blank"
+            >
+              Open Data Portal
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="https://www.officialgazette.gov.ph/"
+              target="_blank"
+            >
+              Official Gazette
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- GOVERNMENT LINKS -->
+      <div class="col-lg-3">
+        <h5>GOVERNMENT LINKS</h5>
+
+        <ul class="govph-links">
+          <li>
+            <a href="https://op-proper.gov.ph" target="_blank">
+              Office of the President
+            </a>
+          </li>
+
+          <li>
+            <a href="https://ovp.gov.ph" target="_blank">
+              Office of the Vice President
+            </a>
+          </li>
+
+          <li>
+            <a href="https://senate.gov.ph" target="_blank">
+              Senate of the Philippines
+            </a>
+          </li>
+
+          <li>
+            <a href="https://www.congress.gov.ph" target="_blank">
+              House of Representatives
+            </a>
+          </li>
+
+          <li>
+            <a href="https://sc.judiciary.gov.ph" target="_blank">
+              Supreme Court
+            </a>
+          </li>
+
+          <li>
+            <a href="https://ca.judiciary.gov.ph" target="_blank">
+              Court of Appeals
+            </a>
+          </li>
+
+          <li>
+            <a href="https://sb.judiciary.gov.ph" target="_blank">
+              Sandiganbayan
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
     <!-- FOOTER BOTTOM -->
     <div class="footer-bottom">
       Copyright © {{ currentYear }}
@@ -226,8 +335,8 @@ onMounted(() => {
   margin-bottom: 8px;
 }
 
-.footer-bottom {
-  background: #f3f3f3;
+.footer-bottom { 
+  background: #a3b7c4;
   text-align: center;
   padding: 20px 10px;
   font-size: 15px;
@@ -252,5 +361,71 @@ onMounted(() => {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+
+/* ======================================
+   GOVPH SECTION
+====================================== */
+
+.govph-section {
+  background: #f4f6f9;
+  padding: 50px 0;
+  color: #111;
+}
+
+.govph-section h5 {
+  color: var(--primary);
+  font-weight: 900;
+  margin-bottom: 25px;
+  font-size: 1rem;
+}
+
+.govph-section p {
+  line-height: 1.8;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.govph-seal {
+  display: flex;
+  justify-content: center;
+}
+
+.govph-seal img {
+  width: 180px;
+  max-width: 100%;
+}
+
+.govph-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.govph-links li {
+  margin-bottom: 14px;
+}
+
+.govph-links a {
+  color: #111;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.govph-links a:hover {
+  color: var(--primary);
+  padding-left: 6px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 991px) {
+
+  .govph-section {
+    text-align: center;
+  }
+
+  .govph-seal {
+    margin-bottom: 30px;
+  }
 }
 </style>

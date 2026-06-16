@@ -75,7 +75,46 @@
         </div>
       </div>
     </section>
+    <!-- LOCATION GUIDE -->
+    <section class="location-guide-section">
+      <div class="container">
+        <div class="contact-kicker">Location Guide</div>
 
+        <div class="location-guide-grid">
+          <div class="location-guide-item">
+            <h3>
+              Directions to the library <br />
+              <span>ENTRANCE 1 - FROM 7:00 AM to 6:00 PM</span>
+            </h3>
+
+            <!-- Replace with your interactive HTML iframe or image -->
+            <iframe
+              src="/location-guide/entrance2.html"
+              width="100%"
+              height="420"
+              style="border: 0"
+              loading="lazy"
+            ></iframe>
+          </div>
+
+          <div class="location-guide-item">
+            <h3>
+              Directions to the library <br />
+              <span>ENTRANCE 2 - FROM 10:00 AM to 6:00 PM</span>
+            </h3>
+
+            <!-- Replace with your interactive HTML iframe or image -->
+            <iframe
+              src="/location-guide/entrance1.html"
+              width="100%"
+              height="420"
+              style="border: 0"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- MAP -->
     <section class="contact-map-section">
       <div class="container">
@@ -246,6 +285,55 @@
   border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.location-guide-section {
+  background: #f4f6f8;
+  padding: 80px 0;
+}
+
+.location-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-top: 35px;
+}
+
+.location-guide-item {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+}
+
+.location-guide-item h3 {
+  text-align: center;
+  color: #111;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.4;
+  padding: 26px 20px;
+  margin: 0;
+}
+
+.location-guide-item h3 span {
+  font-size: 20px;
+  color: var(--primary);
+}
+
+.location-guide-item iframe {
+  display: block;
+  background: #fff;
+}
+
+@media (max-width: 991px) {
+  .location-guide-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .location-guide-item iframe {
+    height: 360px;
+  }
 }
 
 @media (max-width: 991px) {

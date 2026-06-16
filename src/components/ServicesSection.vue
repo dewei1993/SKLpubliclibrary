@@ -17,28 +17,28 @@ import service8 from '@/assets/images/services8.webp'
 
 const featuredActivity = ref({
   title: 'SM Care Book Donation Drive',
-  date: 'JULY 24, 2024',
+  date: 'NOVEMBER 12, 2025',
   desc: 'SKL received more than 40 boxes of donated books and learning materials through the SM Cares Book Donation Drive Project to support literacy and community learning.',
   img: event1,
 })
 
 const activities = [
   {
-    date: 'AUGUST 12, 2024',
+    date: 'FEBRUARY 11, 2025',
     title: 'Library Outreach Program',
     desc: 'A literacy and community engagement initiative that extends library programs, reading activities, and educational services beyond the library.',
     img: event4,
   },
 
   {
-    date: 'JULY 28, 2024',
+    date: 'MARCH 14, 2025',
     title: 'Livelihood Program',
     desc: 'A community-based livelihood activity that provided practical skills, learning opportunities, and empowerment programs for participants.',
     img: event2,
   },
 
   {
-    date: 'AUGUST 05, 2024',
+    date: 'June 25, 2024',
     title: 'Library Orientation Program',
     desc: 'An orientation activity introducing library users to the facilities, services, collections, and digital resources of Sentro ng Karunungan Library.',
     img: event3,
@@ -125,7 +125,7 @@ function scrollServices(direction) {
     <div class="container">
       <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
-          <div class="section-title-top">SERVICES</div>
+          <div class="section-title-top">Services</div>
           <h2 class="section-title text-uppercase">Library Services</h2>
           <p class="services-subtitle">
             Providing the tools and environments necessary for academic success and lifelong
