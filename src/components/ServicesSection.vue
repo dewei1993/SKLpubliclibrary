@@ -15,6 +15,27 @@ import service6 from '@/assets/images/services6.webp'
 import service7 from '@/assets/images/services7.webp'
 import service8 from '@/assets/images/services8.webp'
 
+const touchStartX = ref(0)
+
+function handleTouchStart(e) {
+  touchStartX.value = e.touches[0].clientX
+}
+
+function handleTouchEnd(e) {
+  const touchEndX = e.changedTouches[0].clientX
+  const diff = touchStartX.value - touchEndX
+
+  // Swipe Left → Next
+  if (diff > 50) {
+    scrollServices(1)
+  }
+
+  // Swipe Right → Previous
+  if (diff < -50) {
+    scrollServices(-1)
+  }
+}
+
 const featuredActivity = ref({
   title: 'SM Care Book Donation Drive',
   date: 'NOVEMBER 12, 2025',
@@ -144,7 +165,11 @@ function scrollServices(direction) {
       </div>
 
       <!-- CENTER ENLARGED CAROUSEL -->
-      <div class="services-carousel">
+      <div
+          class="services-carousel"
+          @touchstart="handleTouchStart"
+          @touchend="handleTouchEnd"
+        >
         <button class="services-side-arrow left" @click="scrollServices(-1)">
           <i class="bi bi-arrow-left"></i>
         </button>
@@ -311,7 +336,7 @@ function scrollServices(direction) {
 
 .library-services-section {
   background: #fff;
-  padding: 90px 0;
+  padding: 50px 0;
 }
 
 .services-header {
@@ -339,7 +364,7 @@ function scrollServices(direction) {
   font-weight: 800;
   text-decoration: none;
   transition: 0.3s ease;
-  margin-bottom: 20%;
+  margin-bottom: 0;
 }
 
 .collections-link:hover {
@@ -450,14 +475,19 @@ function scrollServices(direction) {
     width: 75%;
   }
 }
-
 @media (max-width: 576px) {
   .services-carousel {
     height: 360px;
+    cursor: grab;
+    touch-action: pan-y;
+  }
+
+  .services-carousel:active {
+    cursor: grabbing;
   }
 
   .service-poster-card {
-    width: 86%;
+    width: 92%;
   }
 
   .service-poster-card.left,
@@ -465,50 +495,10 @@ function scrollServices(direction) {
     opacity: 0;
   }
 
-  .services-side-arrow.left {
-    left: 8px;
-  }
-
-  .services-side-arrow.right {
-    right: 8px;
+  /* HIDE ARROWS */
+  .services-side-arrow {
+    display: none;
   }
 }
 
-/* =========================================
-   RESPONSIVE
-========================================= */
-
-@media (max-width: 991px) {
-  .featured-news-card {
-    grid-template-columns: 1fr;
-  }
-
-  .featured-news-image {
-    min-height: 300px;
-  }
-
-  .service-card-poster {
-    flex: 0 0 calc((100% - 24px) / 2);
-    max-width: calc((100% - 24px) / 2);
-  }
-}
-
-@media (max-width: 767px) {
-  .services-top-controls {
-    justify-content: flex-end;
-  }
-
-  .service-card-poster {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-
-  .services-title {
-    font-size: 36px;
-  }
-
-  .featured-news-content {
-    padding: 28px;
-  }
-}
 </style>
