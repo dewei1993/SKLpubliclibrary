@@ -78,6 +78,25 @@ function scrollResources(direction) {
     behavior: 'smooth',
   })
 }
+
+const touchStartX = ref(0)
+
+function handleTouchStart(e) {
+  touchStartX.value = e.touches[0].clientX
+}
+
+function handleTouchEnd(e) {
+  const touchEndX = e.changedTouches[0].clientX
+  const diff = touchStartX.value - touchEndX
+
+  if (diff > 50) {
+    scrollResources(1) // Swipe left
+  }
+
+  if (diff < -50) {
+    scrollResources(-1) // Swipe right
+  }
+}
 </script>
 
 <template>
@@ -108,7 +127,12 @@ function scrollResources(direction) {
           <i class="bi bi-arrow-left"></i>
         </button>
 
-        <div class="resource-track" ref="resourceTrack">
+        <div
+          class="resource-track"
+          ref="resourceTrack"
+          @touchstart="handleTouchStart"
+          @touchend="handleTouchEnd"
+        >
           <a
             v-for="(resource, index) in resources"
             :key="index"
@@ -292,7 +316,6 @@ function scrollResources(direction) {
   height: 200px;
 }
 
-/* MOBILE */
 @media (max-width: 768px) {
   .resources-header-wrap {
     flex-direction: column;
@@ -301,6 +324,22 @@ function scrollResources(direction) {
   .resources-right-controls {
     width: 100%;
     align-items: flex-start;
+  }
+
+  /* HIDE ARROWS */
+  .resource-side-arrow {
+    display: none;
+  }
+
+  /* Enable hand cursor */
+  .resource-track {
+    cursor: grab;
+    touch-action: pan-y;
+    padding: 10px 0;
+  }
+
+  .resource-track:active {
+    cursor: grabbing;
   }
 }
 </style>
