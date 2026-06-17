@@ -13,25 +13,25 @@ const stats = ref([
   {
     label: 'Our Resources',
     icon: 'bi bi-book-half',
-    target: 7598,
+    target: 6025,
     value: 0
   },
   {
     label: 'Library Users',
     icon: 'bi bi-people-fill',
-    target: 569123,
+    target: 150000,
     value: 0
   },
   {
     label: 'Acts. & Programs',
     icon: 'bi bi-check-circle-fill',
-    target: 112,
+    target: 42,
     value: 0
   },
   {
     label: 'Satisfied Users',
     icon: 'bi bi-heart-fill',
-    target: 540890,
+    target: 142500,
     value: 0
   }
 ])
