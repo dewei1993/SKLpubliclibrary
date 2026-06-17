@@ -13,7 +13,7 @@ import pbLogo from '@/assets/images/PBlogo.webp'
       <div>PPLCo: 00001</div>
       <!-- SOCIAL LINKS -->
       <div class="social">
-        <a href="https://www.facebook.com/SKLpubliclibrary" target="_blank">>
+        <a href="https://www.facebook.com/SKLpubliclibrary" target="_blank">
           <i class="bi bi-facebook"></i>
         </a>
         <a href="#">
