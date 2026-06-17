@@ -65,7 +65,7 @@
             <div class="contact-social">
               <h5>Follow us on</h5>
               <div>
-                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.facebook.com/SKLpubliclibrary" target="_blank"><i class="bi bi-facebook"></i></a>
                 <a href="#"><i class="bi bi-tiktok"></i></a>
                 <a href="#"><i class="bi bi-instagram"></i></a>
                 <a href="#"><i class="bi bi-youtube"></i></a>
